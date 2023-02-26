@@ -1,35 +1,26 @@
-# Portfolio Using React JS
+# Portfolio Remake Using React JS
 
 ![image](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png)
 
 > Dibuat oleh Franciscus Rangga Yogianto
 
-Repositori ini berisi kumpulan code pembuatan portfolio yang diimplementasikan dengan menggunakan React Js.
+Repositori ini berisi kumpulan code pembuatan portfolio versi kedua yang diimplementasikan dengan menggunakan React Js dan Bootstrap.
+
+Versi Sebelumnya :
+[Github](https://github.com/FRanggaY/react-portfolio/)
 
 ## Project Setup
 ```
-yarn install
-```
-```
-yarn add react-icons
-```
-```
-yarn add react-router-dom
-```
-```
-yarn add styled-components
-```
-```
-yarn add framer-motion@4.1.17
+npm install
 ```
 ### Compiles and hot-reloads for development
 ```
-yarn start
+npm start
 ```
 
 ### Compiles and minifies for production
 ```
-yarn build
+npm build
 ```
 
 ## ⚡ Quick Access ⚡
@@ -39,5 +30,4 @@ Semua _script_ yang ada pada repositori ini, dapat diakses dengan cepat lewat li
 - [Src](src/)
   - [Assets](src/assets/)
   - [Components](src/components/)
-  - [Containers](src/containers/)
-- [Data](src/data/)
+  - [Pages](src/pages/)
