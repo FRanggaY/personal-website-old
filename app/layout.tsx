@@ -1,4 +1,8 @@
-import './globals.css'
+'use client';
+
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import '../styles/globals.css';
 
 export const metadata = {
   title: 'Create Next App',
