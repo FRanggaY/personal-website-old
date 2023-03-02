@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Education } from '@/models';
+import { Education, Language, EducationTranslation } from '@/models';
 
 // attributes education
 interface EducationAttributes{
@@ -27,13 +27,34 @@ export default async function handler(
   res: NextApiResponse<{ status: number; data: Educations | string }>
 ) {
   try{
-    // ON PROGRESS - FILTER LANGUAGE
-    // const { query } = req;
-    // const lang = query.lang || 'ENG';
-  
+    const { query } = req;
+    const lang = (query.lang && query.lang) || 'en_US';
+    // find language  specific with filter isActive = 1
+    const dataLanguage = await Language.findOne({
+      where: { isActive: '1', title: lang },
+    }) || "not found";
+    let langSelect:any = 'en_US';
+    if (dataLanguage) {
+      langSelect = lang;
+    } else {
+      // handle language if not found
+      console.error(`Language selected : ${lang} not found or is not active.`);
+    }
+
     // find education specific with filter isActive = 1
     const dataEducation = await Education.findAll({
-      attributes: ['id', 'title', 'degree', 'fieldOfStudy', 'location', 'startDate', 'endDate', 'description', 'logo', 'url'],
+      attributes: [
+        'id', 'logo', 'url', 
+        'educations_translation.title', 'educations_translation.degree', 'educations_translation.fieldOfStudy', 
+        'educations_translation.location', 'educations_translation.startDate', 'educations_translation.endDate', 
+        'educations_translation.description'
+      ],
+      include: [{
+        model: EducationTranslation,
+        where: {
+          language: langSelect
+        }
+      }],
       where: { isActive: '1'},
     });
 
@@ -48,15 +69,15 @@ export default async function handler(
         description: "", // can change
         educations: dataEducation.map((education) => ({ // loop
           id: education.dataValues.id,
-          title: education.dataValues.title,
-          degree: education.dataValues.degree,
-          fieldOfStudy: education.dataValues.fieldOfStudy,
-          location: education.dataValues.location,
-          startDate: education.dataValues.startDate,
-          endDate: education.dataValues.endDate,
-          description: education.dataValues.description,
           logo : education.dataValues.logo,
           url : education.dataValues.url,
+          title: education.dataValues.educations_translation.title,
+          degree: education.dataValues.educations_translation.degree,
+          fieldOfStudy: education.dataValues.educations_translation.fieldOfStudy,
+          location: education.dataValues.educations_translation.location,
+          startDate: education.dataValues.educations_translation.startDate,
+          endDate: education.dataValues.educations_translation.endDate,
+          description: education.dataValues.educations_translation.description,
         })),
       };
       const response = { status: 200, data: educations };
