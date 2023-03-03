@@ -98,6 +98,62 @@ SkillTranslation.init({
   modelName: 'skills_translations'
 });
 
+// Project model
+class Project extends Model {}
+Project.init({
+  image: DataTypes.STRING,
+  createdAt: DataTypes.STRING,
+  updatedAt: DataTypes.STRING,
+  isActive: DataTypes.STRING,
+}, {
+  sequelize,
+  modelName: 'projects'
+});
+
+// ProjectTranslation model
+class ProjectTranslation extends Model {}
+ProjectTranslation.init({
+  projectId: DataTypes.STRING,
+  language: DataTypes.STRING,
+  name: DataTypes.STRING,
+  slug: DataTypes.STRING,
+  description: DataTypes.STRING,
+  tags: DataTypes.STRING,
+  createdAt: DataTypes.STRING,
+  updatedAt: DataTypes.STRING
+}, {
+  sequelize,
+  modelName: 'projects_translations'
+});
+
+// ProjectImage model
+class ProjectImage extends Model {}
+ProjectImage.init({
+  projectId: DataTypes.STRING,
+  name: DataTypes.STRING,
+  attachment: DataTypes.STRING,
+  createdAt: DataTypes.STRING,
+  updatedAt: DataTypes.STRING
+}, {
+  sequelize,
+  modelName: 'projects_images'
+});
+
+// ProjectPlatform model
+class ProjectPlatform extends Model {}
+ProjectPlatform.init({
+  projectId: DataTypes.STRING,
+  name: DataTypes.STRING,
+  logo: DataTypes.STRING,
+  urlPreview: DataTypes.STRING,
+  urlRepository: DataTypes.STRING,
+  createdAt: DataTypes.STRING,
+  updatedAt: DataTypes.STRING
+}, {
+  sequelize,
+  modelName: 'projects_platforms'
+});
+
 // Language model
 class Language extends Model {}
 Language.init({
@@ -113,16 +169,29 @@ Language.init({
   modelName: 'languages'
 });
 
-// Define association
+// association education relationship
 Education.hasOne(EducationTranslation, { foreignKey: 'educationId' });
 EducationTranslation.belongsTo(Education, { foreignKey: 'educationId' });
+
+// association education relationship
 Experience.hasOne(ExperienceTranslation, { foreignKey: 'experienceId' });
 ExperienceTranslation.belongsTo(Experience, { foreignKey: 'experienceId' });
+
+// association skill relationship
 Skill.hasOne(SkillTranslation, { foreignKey: 'skillId' });
 SkillTranslation.belongsTo(Skill, { foreignKey: 'skillId' });
 
+// association project relationship
+Project.hasOne(ProjectTranslation, { foreignKey: 'projectId' });
+ProjectTranslation.belongsTo(Project, { foreignKey: 'projectId' });
+Project.hasMany(ProjectImage, { foreignKey: 'projectId' });
+ProjectImage.belongsTo(Project, { foreignKey: 'projectId' });
+Project.hasMany(ProjectPlatform, { foreignKey: 'projectId' });
+ProjectPlatform.belongsTo(Project, { foreignKey: 'projectId' });
+
 module.exports = { 
   Education, EducationTranslation, 
-  Experience,ExperienceTranslation, 
+  Experience, ExperienceTranslation, 
   Skill, SkillTranslation,
+  Project, ProjectTranslation, ProjectImage, ProjectPlatform,
   Language, sequelize };
