@@ -169,6 +169,20 @@ Language.init({
   modelName: 'languages'
 });
 
+// SocialMedia model
+class SocialMedia extends Model {}
+SocialMedia.init({
+  name: DataTypes.STRING,
+  url: DataTypes.STRING,
+  logo: DataTypes.STRING,
+  createdAt: DataTypes.STRING,
+  updatedAt: DataTypes.STRING,
+  isActive: DataTypes.STRING,
+}, {
+  sequelize,
+  modelName: 'social_media'
+});
+
 // association education relationship
 Education.hasOne(EducationTranslation, { foreignKey: 'educationId' });
 EducationTranslation.belongsTo(Education, { foreignKey: 'educationId' });
@@ -194,4 +208,4 @@ module.exports = {
   Experience, ExperienceTranslation, 
   Skill, SkillTranslation,
   Project, ProjectTranslation, ProjectImage, ProjectPlatform,
-  Language, sequelize };
+  SocialMedia, Language, sequelize };
