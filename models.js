@@ -38,6 +38,39 @@ EducationTranslation.init({
   modelName: 'educations_translations'
 });
 
+// Experience model
+class Experience extends Model {}
+Experience.init({
+  image: DataTypes.STRING,
+  url: DataTypes.STRING,
+  createdAt: DataTypes.STRING,
+  updatedAt: DataTypes.STRING,
+  isActive: DataTypes.STRING,
+}, {
+  sequelize,
+  modelName: 'experiences'
+});
+
+// ExperienceTranslation model
+class ExperienceTranslation extends Model {}
+ExperienceTranslation.init({
+  experienceId: DataTypes.STRING,
+  language: DataTypes.STRING,
+  name: DataTypes.STRING,
+  employmentType: DataTypes.STRING,
+  companyName: DataTypes.STRING,
+  location: DataTypes.STRING,
+  locationType: DataTypes.STRING,
+  startDate: DataTypes.STRING,
+  endDate: DataTypes.STRING,
+  industry: DataTypes.STRING,
+  createdAt: DataTypes.STRING,
+  updatedAt: DataTypes.STRING
+}, {
+  sequelize,
+  modelName: 'experiences_translations'
+});
+
 // Language model
 class Language extends Model {}
 Language.init({
@@ -53,5 +86,10 @@ Language.init({
 // Define association
 Education.hasOne(EducationTranslation, { foreignKey: 'educationId' });
 EducationTranslation.belongsTo(Education, { foreignKey: 'educationId' });
+Experience.hasOne(ExperienceTranslation, { foreignKey: 'experienceId' });
+ExperienceTranslation.belongsTo(Experience, { foreignKey: 'experienceId' });
 
-module.exports = { Education, EducationTranslation, Language, sequelize };
+module.exports = { 
+  Education, EducationTranslation, 
+  Experience,ExperienceTranslation, 
+  Language, sequelize };
