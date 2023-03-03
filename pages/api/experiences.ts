@@ -43,7 +43,7 @@ export default async function handler(
       console.error(`Language selected : ${lang} not found or is not active.`);
     }
 
-    // find education specific with filter isActive = 1
+    // find experience specific with filter isActive = 1
     const dataExperience = await Experience.findAll({
       attributes: [
         'id', 'url', 'image', 

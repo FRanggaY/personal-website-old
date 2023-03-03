@@ -71,10 +71,40 @@ ExperienceTranslation.init({
   modelName: 'experiences_translations'
 });
 
+// Skill model
+class Skill extends Model {}
+Skill.init({
+  url: DataTypes.STRING,
+  image: DataTypes.STRING,
+  createdAt: DataTypes.STRING,
+  updatedAt: DataTypes.STRING,
+  isActive: DataTypes.STRING,
+}, {
+  sequelize,
+  modelName: 'skills'
+});
+
+// SkillTranslation model
+class SkillTranslation extends Model {}
+SkillTranslation.init({
+  skillId: DataTypes.STRING,
+  language: DataTypes.STRING,
+  name: DataTypes.STRING,
+  typeData: DataTypes.STRING,
+  createdAt: DataTypes.STRING,
+  updatedAt: DataTypes.STRING
+}, {
+  sequelize,
+  modelName: 'skills_translations'
+});
+
 // Language model
 class Language extends Model {}
 Language.init({
   title: DataTypes.STRING,
+  name: DataTypes.STRING,
+  proficieny: DataTypes.STRING,
+  image: DataTypes.STRING,
   createdAt: DataTypes.STRING,
   updatedAt: DataTypes.STRING,
   isActive: DataTypes.STRING,
@@ -88,8 +118,11 @@ Education.hasOne(EducationTranslation, { foreignKey: 'educationId' });
 EducationTranslation.belongsTo(Education, { foreignKey: 'educationId' });
 Experience.hasOne(ExperienceTranslation, { foreignKey: 'experienceId' });
 ExperienceTranslation.belongsTo(Experience, { foreignKey: 'experienceId' });
+Skill.hasOne(SkillTranslation, { foreignKey: 'skillId' });
+SkillTranslation.belongsTo(Skill, { foreignKey: 'skillId' });
 
 module.exports = { 
   Education, EducationTranslation, 
   Experience,ExperienceTranslation, 
+  Skill, SkillTranslation,
   Language, sequelize };
