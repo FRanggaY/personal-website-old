@@ -1,0 +1,28 @@
+{
+  "title": "Franciscus Rangga Yogianto",
+  "description": "This is my personal portfolio.",
+  "openGraph": {
+    "type": "website",
+    "locale": "en_US",
+    "url": "http://localhost:3000/en_us",
+    "title": "Franciscus Rangga Yogianto | Portfolio",
+    "description": "This is my personal portfolio.",
+    "images": [
+      {
+        "url": "https://example.com/image1.jpg",
+        "alt": "Image 1"
+      },
+      {
+        "url": "https://example.com/image2.jpg",
+        "alt": "Image 2"
+      }
+    ],
+    "site_name": "FRY Portfolio"
+  },
+  "twitter" : {
+    "handle": "@handle",
+    "site": "http://localhost:3000/en_us",
+    "cardType": "summary_large_image"
+  }
+}
+  
