@@ -12,7 +12,7 @@ interface SocialMediaAttributes{
 // type profile
 type Profile = {
   name: string;
-  position: string;
+  position: string[];
   socialMedia: SocialMediaAttributes[];
 };
 
@@ -37,7 +37,7 @@ export default async function handler(
       // initialize template
       const profile: Profile = {
         name: process.env.YOURNAME || '', // can change
-        position: process.env.YOURPOSITIONJOB || '', // can change
+        position: process.env.YOURPOSITIONJOB!.split(', ') || [''], // can change
         socialMedia: dataSocialMedia.map((socialmedia) => ({ // loop
           id: socialmedia.dataValues.id,
           name : socialmedia.dataValues.name,
