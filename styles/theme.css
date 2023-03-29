@@ -1,21 +1,39 @@
 :root {
     /* Your default theme */
-    --background: white;
-    --foreground: black;
+    --main-blue: #1971C2;
+    --main-red: #D22F27;
+    --main-darkblue: #00008B;
+    --main-blue: #107DFE;
+    --main-purple: #7D55F2;
+    --main-aqua: #15AABF;
+    --main-darkaqua: #073042;
+    --main-green: #46C25C;
+    --main-orange: #FD7E14;
+
+    /* Your light theme */
+    --addition-one: #49507D;
+    --addition-two: #F1F3F5;
+    --addition-three: #FFFFFF;
+    --addition-four: #EEEEEE;
+    --addition-five: #E9ECEF;
 }
 
+/* Your dark theme */
 [data-theme='dark'] {
-    --background: black;
-    --foreground: white;
+    --addition-one: #ACB9C1;
+    --addition-two: #2C2E33;
+    --addition-three: #25262B;
+    --addition-four: #1A1B1E;
+    --addition-five: #2C2E33;
 }
-
-/*body{
-    background-color: var(--background);
-}*/
 
 .navbar-text-color{
-    color: var(--foreground);
+    color: var(--addition-one);
 }
-.navbar-bg-color{
-    background: var(--background);
+.navbar-bg-color, .footer-bg-color{
+    background: var(--addition-three);
+}
+
+.img-custom{
+    background-image: url('../public/assets/image/thumbnail.jpg');
 }

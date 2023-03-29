@@ -1,6 +1,7 @@
 {
   "title": "Franciscus Rangga Yogianto",
   "description": "This is my personal portfolio.",
+  "image": "/assets/image/my-logo.png",
   "openGraph": {
     "type": "website",
     "locale": "en_US",
