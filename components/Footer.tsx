@@ -8,22 +8,13 @@ import { locales, dataLangConvert } from '@/data/dataTranslation'
 import { RiArrowUpCircleFill } from 'react-icons/ri'
 // my logo
 import MyLogo from '@/public/assets/image/my-logo.png'
-// social media logo
-import githubLogo from '@/public/assets/image/social_medias/github.png'
-import linkedinLogo from '@/public/assets/image/social_medias/linkedin.png'
-import instagramLogo from '@/public/assets/image/social_medias/instagram.png'
 
 function Footer({ currentPath, socialMedia }: any) {
   // get active language from path
   const activeLang = currentPath.split('/')[1];
   let activeLangValueDefaultFormat = ''
   let activeLangValueInitial = ''
-  // list socialMediaLogo
-  const socialMediaLogo: any = {
-    'github': githubLogo,
-    'linkedin': linkedinLogo,
-    'instagram': instagramLogo,
-  }
+
   // check active language
   try {
     activeLangValueDefaultFormat = dataLangConvert[activeLang].formatLang
@@ -44,7 +35,7 @@ function Footer({ currentPath, socialMedia }: any) {
         {/* button scroll to the top */}
         <div>
           <button className='absolute footer-bg-color p-2 flex flex-col items-center rounded-md border-2' onClick={scrollTop}>
-            <RiArrowUpCircleFill size={30} />
+            <RiArrowUpCircleFill size={30}/>
             <p className='font-bold'>{titleFooter.base.buttonTopTitle}</p>
           </button>
         </div>
@@ -53,7 +44,7 @@ function Footer({ currentPath, socialMedia }: any) {
           {socialMedia.map((data: any, index: string) => {
             // button social media
             return <a href={data.url} key={index} className='p-2 footer-bg-color border-md rounded-md' target='_blank'>
-              <Image src={socialMediaLogo[data.name]} alt={data.name} width={30} />
+              <Image src={"/assets/image/social_medias/" + data.image} alt={data.name} width={30} height={30} style={{ width: 'auto', height: 'auto' }}/>
             </a>
           })}
         </div>

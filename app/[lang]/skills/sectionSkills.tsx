@@ -15,7 +15,7 @@ interface Props {
 const ListItem = ({ name, description, logoUrl, url }: Props) => {
   return <a href={url} target="_blank" className='p-5 flex items-center card-skill-hover gap-2'>
     {/* image */}
-    <Image src={logoUrl} alt={name} width={40} height={40} />
+    <Image src={logoUrl} alt={name} width={40} height={40} style={{ width: 'auto', height: 'auto' }} />
     <div>
       {/* title */}
       <p className='text-xl font-semibold'>{name}</p>
@@ -48,7 +48,7 @@ function SectionSkills({ title, titleTechnology, titleSolution, titleLanguage, d
                 key={index}
                 name={skill.name}
                 description={skill.description}
-                logoUrl={"/assets/logo/skills/tech/" + skill.image}
+                logoUrl={"/assets/image/skills/tech/" + skill.image}
                 url={skill.url}
               />
             })
@@ -74,7 +74,7 @@ function SectionSkills({ title, titleTechnology, titleSolution, titleLanguage, d
               return <ListItem
                 key={index}
                 name={skill.name}
-                logoUrl={"/assets/logo/skills/tech/" + skill.image}
+                logoUrl={"/assets/image/skills/tech/" + skill.image}
               />
             })
           ) : (

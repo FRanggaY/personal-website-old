@@ -175,6 +175,7 @@ class SocialMedia extends Model {}
 SocialMedia.init({
   name: DataTypes.STRING,
   url: DataTypes.STRING,
+  image: DataTypes.STRING,
   logo: DataTypes.STRING,
   createdAt: DataTypes.STRING,
   updatedAt: DataTypes.STRING,
