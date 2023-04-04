@@ -34,6 +34,10 @@
     background: var(--addition-three);
 }
 
+.card-skill-hover:hover{
+    background: var(--addition-four);
+}
+
 .img-custom{
     background-image: url('../public/assets/image/thumbnail.jpg');
 }

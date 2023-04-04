@@ -7,15 +7,11 @@ interface SkillAttributes{
   name: string;
   url: string;
   image: string;
-  typeData: string;
+  description: string;
 }
 
 // type skills
-type Skills = {
-  title: string;
-  description?: string; // optional
-  skills: SkillAttributes[];
-};
+type Skills =  SkillAttributes[];
 
 export default async function handler(
   req: NextApiRequest,
@@ -24,7 +20,7 @@ export default async function handler(
   try{
     const { query } = req;
     const lang = (query.lang && query.lang) || 'en_US';
-    let typedata = (query.typedata && query.typedata) || 'technical';
+    let categorySelect = (query.category && query.category) || 'tech';
     // find language  specific with filter isActive = 1
     const dataLanguage = await Language.findOne({
       where: { isActive: '1', title: lang },
@@ -37,18 +33,19 @@ export default async function handler(
       console.error(`Language selected : ${lang} not found or is not active.`);
     }
 
-    // find skill specific with filter isActive = 1
+    // find skill specific with filter isActive = 1 and language from value langSelect and category from value categorySelect
     const dataSkill = await Skill.findAll({
       attributes: [
         'id', 'url', 'image', 
-        'skills_translation.typeData'
+        'skills_translation.description',
+        'skills_translation.name',
       ],
       include: [{
         model: SkillTranslation,
         where: {
           language: langSelect,
-          typeData: typedata,
-        }
+          category: categorySelect,
+        },
       }],
       where: { isActive: '1'},
     });
@@ -59,17 +56,13 @@ export default async function handler(
       res.status(response.status).json(response);
     }else{
       // initialize template
-      const skills: Skills = {
-        title: "My Skill", // can change
-        description: "", // can change
-        skills: dataSkill.map((skill) => ({ // loop
-          id: skill.dataValues.id,
-          name : skill.dataValues.name,
-          url : skill.dataValues.url,
-          image: skill.dataValues.image,
-          typeData: skill.dataValues.skills_translation.typeData,
-        })),
-      };
+      const skills: Skills = dataSkill.map((skill) => ({ // loop
+        id: skill.dataValues.id,
+        name : skill.dataValues.skills_translation.name,
+        url : skill.dataValues.url,
+        image: skill.dataValues.image,
+        description: skill.dataValues.skills_translation.description,
+      }));
       const response = { status: 200, data: skills };
       res.status(response.status).json(response);
     }

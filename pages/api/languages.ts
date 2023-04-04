@@ -10,11 +10,7 @@ interface LanguageAttributes{
 }
 
 // type languages
-type Languages = {
-  title: string;
-  description?: string; // optional
-  languages: LanguageAttributes[];
-};
+type Languages = LanguageAttributes[];
 
 export default async function handler(
   req: NextApiRequest,
@@ -34,16 +30,12 @@ export default async function handler(
       res.status(response.status).json(response);
     }else{
       // initialize template
-      const language: Languages = {
-        title: "My Language", // can change
-        description: "", // can change
-        languages: dataLanguage.map((language) => ({ // loop
-          id: language.dataValues.id,
-          name : language.dataValues.name,
-          proficieny : language.dataValues.proficieny,
-          image: language.dataValues.image,
-        })),
-      };
+      const language: Languages = dataLanguage.map((language) => ({ // loop
+        id: language.dataValues.id,
+        name : language.dataValues.name,
+        proficieny : language.dataValues.proficieny,
+        image: language.dataValues.image,
+      }));
       const response = { status: 200, data: language };
       res.status(response.status).json(response);
     }

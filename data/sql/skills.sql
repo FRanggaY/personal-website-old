@@ -18,7 +18,8 @@ CREATE TABLE skills_translations (
 	skillId TEXT(5) NOT NULL,
     "language" TEXT(5) NOT NULL,
 	"name" TEXT(10) NOT NULL,
-    "typeData" TEXT(10) NOT NULL,
+    "description" TEXT(24) NOT NULL,
+    "category" TEXT(10) NOT NULL,
     createdAt TEXT(10) NOT NULL,
 	updatedAt TEXT(10) NOT NULL,
 	FOREIGN KEY (skillId) REFERENCES skills(id)

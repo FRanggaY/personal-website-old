@@ -90,7 +90,8 @@ SkillTranslation.init({
   skillId: DataTypes.STRING,
   language: DataTypes.STRING,
   name: DataTypes.STRING,
-  typeData: DataTypes.STRING,
+  description: DataTypes.STRING,
+  category: DataTypes.STRING,
   createdAt: DataTypes.STRING,
   updatedAt: DataTypes.STRING
 }, {
