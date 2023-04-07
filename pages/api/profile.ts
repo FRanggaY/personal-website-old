@@ -4,6 +4,7 @@ import { SocialMedia } from '@/models';
 // attributes socialmedia
 interface SocialMediaAttributes {
   id: string;
+  username: string;
   name: string;
   image: string;
   url: string;
@@ -24,7 +25,7 @@ export default async function handler(
     // find socialmedia specific with filter isActive = 1
     const dataSocialMedia = await SocialMedia.findAll({
       attributes: [
-        'id', 'name', 'url', 'image'
+        'id', 'name', 'url', 'image', 'username'
       ],
       where: { isActive: '1' },
     });
@@ -40,6 +41,7 @@ export default async function handler(
         position: process.env.YOURPOSITIONJOB!.split(', ') || [''], // can change
         socialMedia: dataSocialMedia.map((socialmedia) => ({ // loop
           id: socialmedia.dataValues.id,
+          username: socialmedia.dataValues.username,
           name: socialmedia.dataValues.name,
           image: socialmedia.dataValues.image,
           url: socialmedia.dataValues.url,

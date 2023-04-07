@@ -174,6 +174,7 @@ Language.init({
 class SocialMedia extends Model {}
 SocialMedia.init({
   name: DataTypes.STRING,
+  username: DataTypes.STRING,
   url: DataTypes.STRING,
   image: DataTypes.STRING,
   logo: DataTypes.STRING,

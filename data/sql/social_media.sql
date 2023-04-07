@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS social_media
 
 CREATE TABLE social_media (
 	id TEXT(5) NOT NULL, 
+    "username" TEXT(32) NOT NULL,
     "name" TEXT(10) NOT NULL,
     "url" TEXT(65),
     "image" TEXT(48) NOT NULL,

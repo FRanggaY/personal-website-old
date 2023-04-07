@@ -1,3 +1,4 @@
+import { en_US_About_Data } from "./about";
 import { en_US_Footer_Data } from "./footer";
 import { en_US_Landing_Data } from "./landing";
 import { en_US_Navbar_Data } from "./navbar";
@@ -7,5 +8,6 @@ export const en_US_Data: any = {
   navbar: en_US_Navbar_Data,
   landing: en_US_Landing_Data,
   skills: en_US_Skills_Data,
+  about: en_US_About_Data,
   footer: en_US_Footer_Data,
 }
