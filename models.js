@@ -145,7 +145,6 @@ class ProjectPlatform extends Model {}
 ProjectPlatform.init({
   projectId: DataTypes.STRING,
   name: DataTypes.STRING,
-  logo: DataTypes.STRING,
   urlPreview: DataTypes.STRING,
   urlRepository: DataTypes.STRING,
   createdAt: DataTypes.STRING,

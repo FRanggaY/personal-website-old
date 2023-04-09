@@ -1,14 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Project, Language, ProjectPlatform, ProjectTranslation } from '@/models';
-
-// attributes project platform
-interface ProjectPlatformAttributes {
-  name: string;
-  urlPreview: string;
-  urlRepository: string;
-  logo: string;
-}
-
 // attributes project
 interface ProjectAttributes{
   id: string;
@@ -16,13 +7,10 @@ interface ProjectAttributes{
   updatedAt: string;
   slug: string;
   image: string;
-  platforms: ProjectPlatformAttributes[];
 }
 
 // type projects
 type Projects = {
-  title: string;
-  description?: string; // optional
   projects: ProjectAttributes[];
   total: any;
 };
@@ -73,6 +61,9 @@ export default async function handler(
       offset
     });
 
+    // calculate total number of pages
+    const totalPages = Math.ceil(count / Number(perPage));
+
     // if dataProject not found
     if (rows.length === 0) {
       const response = { status: 404, data: "Data not found" };
@@ -80,25 +71,18 @@ export default async function handler(
     }else{
       // initialize template
       const projects: Projects = {
-        title: "My Experience", // can change
-        description: "", // can change
         projects: rows.map((project) => ({ // loop
           id: project.dataValues.id,
           name: project.dataValues.projects_translation.name,
           updatedAt: project.dataValues.projects_translation.updatedAt,
           slug: project.dataValues.projects_translation.slug,
           image: project.dataValues.image,
-          platforms: project.dataValues.projects_platforms.map((platform:any) => ({ // loop
-            name: platform.dataValues.name,
-            urlPreview: platform.dataValues.urlPreview,
-            urlRepository: platform.dataValues.urlRepository,
-            logo: platform.dataValues.logo
-          }) )
         })),
         total: {
           'currentPage': page,
           'totalRowsInPage' : perPage,
-          'totalRows' : count
+          'totalRows' : count,
+          'totalPages': totalPages
         }
       };
       const response = { status: 200, data: projects };

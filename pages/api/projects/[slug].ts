@@ -6,7 +6,6 @@ interface ProjectPlatformAttributes {
   name: string;
   urlPreview: string;
   urlRepository: string;
-  logo: string;
 }
 
 // attributes project image
@@ -87,7 +86,6 @@ export default async function handler(
           name: platform.dataValues.name,
           urlPreview: platform.dataValues.urlPreview,
           urlRepository: platform.dataValues.urlRepository,
-          logo: platform.dataValues.logo
         }) ),
         images: dataProject.dataValues.projects_images.map((image:any) => ({ // loop
           name: image.dataValues.name,
