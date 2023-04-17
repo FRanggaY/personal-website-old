@@ -8,6 +8,8 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 // import react icons
 import { RiEyeFill, RiCodeBoxFill } from 'react-icons/ri'
+// additional component
+import FullscreenImage from '@/components/FullScreenImage';
 
 export const metadata: Metadata = {
   title: 'Project Detail | ' + process.env.YOURNAME,
@@ -65,7 +67,13 @@ export default async function Page({ params: { lang, slug } }: any) {
           {/* right */}
           <div>
             {/* thumbnail */}
-            {projectDetailValue.image && <Image src={"/assets/image/projects/" + projectDetailValue.image} alt={projectDetailValue.name} width={500} height={100} style={{ width: '100%', height: 'auto' }} priority={true} />}
+            {projectDetailValue.image && 
+              <FullscreenImage 
+                src={"/assets/image/projects/" + projectDetailValue.image} 
+                alt={projectDetailValue.name} 
+                width={500}
+                height={100}  
+              />}
           </div>
         </div>
         {/* detail image */}
@@ -78,13 +86,11 @@ export default async function Page({ params: { lang, slug } }: any) {
               projectDetailValue.images.map((projectImage: any, index: string) => {
                 if (projectImage.attachment) {
                   return <div key={index}>
-                      <Image 
-                      src={"/assets/image/projects/" + projectImage.attachment}
+                    <FullscreenImage 
+                      src={"/assets/image/projects/" + projectImage.attachment} 
                       alt={projectImage.name}
                       width={300}
                       height={100}
-                      style={{ width: '100%', height: 'auto' }}
-                      priority={true}
                     />
                   </div>
                 }
