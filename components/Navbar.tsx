@@ -37,7 +37,7 @@ function Navbar ({ currentPath, router }: any){
     <div className='fixed left-0 top-0 w-full z-10 ease-in duration-300 navbar-bg-color shadow-md'>
       <div className='max-w-[1240px] m-auto flex justify-between items-center px-4 navbar-text-color'>
         {/* logo */}
-        <Link href={titleNavbar.home.url + activeLang}>
+        <Link href={titleNavbar.home.url}>
           <Image
             priority
             src={MyLogo}
@@ -48,16 +48,16 @@ function Navbar ({ currentPath, router }: any){
         {/* content */}
         <ul className='hidden sm:flex navbar-text-color'>
           <li className='p-4'>
-            <Link href={activeLang + "/" + titleNavbar.projects.url}>{titleNavbar.projects.title}</Link>
+            <Link href={titleNavbar.projects.url}>{titleNavbar.projects.title}</Link>
           </li>
           <li className='p-4'>
-            <Link href={activeLang + "/" + titleNavbar.skills.url}>{titleNavbar.skills.title}</Link>
+            <Link href={titleNavbar.skills.url}>{titleNavbar.skills.title}</Link>
           </li>
           <li className='p-4'>
-            <Link href={activeLang + "/" + titleNavbar.about.url}>{titleNavbar.about.title}</Link>
+            <Link href={titleNavbar.about.url}>{titleNavbar.about.title}</Link>
           </li>
           <li className='p-4'>
-            <Link href={activeLang + "/" + titleNavbar.service.url}>{titleNavbar.service.title}</Link>
+            <Link href={titleNavbar.service.url}>{titleNavbar.service.title}</Link>
           </li>
         </ul>
         {/* mode */}
@@ -88,7 +88,7 @@ function Navbar ({ currentPath, router }: any){
           <ul>
             <li className='p-4 text-3xl hover:text-gray-500 flex justify-center'>
               {/* logo */}
-              <Link href='/'>
+              <Link href={titleNavbar.home.url}>
                 <Image
                   priority
                   src={MyLogo}
@@ -103,16 +103,16 @@ function Navbar ({ currentPath, router }: any){
             </div>
             {/* content */}
             <li onClick={handleNav} className='p-4 text-3xl hover:text-gray-500'>
-              <Link href={activeLang + "/" + titleNavbar.projects.url}>{titleNavbar.projects.title}</Link>
+              <Link href={titleNavbar.projects.url}>{titleNavbar.projects.title}</Link>
             </li>
             <li onClick={handleNav} className='p-4 text-3xl hover:text-gray-500'>
-              <Link href={activeLang + "/" + titleNavbar.skills.url}>{titleNavbar.skills.title}</Link>
+              <Link href={titleNavbar.skills.url}>{titleNavbar.skills.title}</Link>
             </li>
             <li onClick={handleNav} className='p-4 text-3xl hover:text-gray-500'>
-              <Link href={activeLang + "/" + titleNavbar.about.url}>{titleNavbar.about.title}</Link>
+              <Link href={titleNavbar.about.url}>{titleNavbar.about.title}</Link>
             </li>
             <li onClick={handleNav} className='p-4 text-3xl hover:text-gray-500'>
-              <Link href={activeLang + "/" + titleNavbar.service.url}>{titleNavbar.service.title}</Link>
+              <Link href={titleNavbar.service.url}>{titleNavbar.service.title}</Link>
             </li>
             {/* mode */}
             <div className='p-4 flex gap-2'>

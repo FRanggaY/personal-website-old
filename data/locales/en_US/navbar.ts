@@ -1,15 +1,15 @@
 export const en_US_Navbar_Data: any = {
   home: {
     title: 'Home',
-    url: '/'
+    url: '/en-us'
   },
   projects: {
     title: 'Projects',
-    url: '/projects'
+    url: '/en-us/projects'
   },
   skills: {
     title: 'Skills',
-    url: '/skills',
+    url: '/en-us/skills',
     technical: {
       title: 'Technical'
     },
@@ -22,7 +22,7 @@ export const en_US_Navbar_Data: any = {
   },
   about: {
     title: 'About',
-    url: '/about',
+    url: '/en-us/about',
     experiences: {
       title: 'Experiences'
     },
@@ -35,6 +35,6 @@ export const en_US_Navbar_Data: any = {
   },
   service: {
     title: 'Service',
-    url: '/service'
+    url: '/en-us/service'
   }
 }

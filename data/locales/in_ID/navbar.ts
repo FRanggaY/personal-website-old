@@ -1,15 +1,15 @@
 export const in_ID_Navbar_Data: any = {
   home: {
     title: 'Utama',
-    url: '/'
+    url: '/in-id'
   },
   projects: {
     title: 'Proyek',
-    url: '/projects'
+    url: '/in-id/projects'
   },
   skills: {
     title: 'Keahlian',
-    url: '/skills',
+    url: '/in-id/skills',
     technical: {
       title: 'Teknis'
     },
@@ -22,7 +22,7 @@ export const in_ID_Navbar_Data: any = {
   },
   about: {
     title: 'Tentang',
-    url: '/about',
+    url: '/in-id/about',
     experiences: {
       title: 'Pengalaman'
     },
@@ -35,6 +35,6 @@ export const in_ID_Navbar_Data: any = {
   },
   service: {
     title: 'Layanan',
-    url: '/service'
+    url: '/in-id/service'
   }
 }
