@@ -25,7 +25,7 @@ const ListItem = ({ name, description, logoUrl, url }: Props) => {
   </a>
 }
 
-function SectionSkills({ title, titleTechnology, titleSolution, titleLanguage, dataSkillTechs, dataSkillSolutions, dataLanguages, comingSoonTitle, comingSoonNote }: any) {
+function SectionSkills({ title, titleTechnology, titleLanguage, dataSkillTechs, dataLanguages, comingSoonTitle, comingSoonNote }: any) {
   return (
     <div>
       {/* title */}
@@ -50,31 +50,6 @@ function SectionSkills({ title, titleTechnology, titleSolution, titleLanguage, d
                 description={skill.description}
                 logoUrl={"/assets/image/skills/tech/" + skill.image}
                 url={skill.url}
-              />
-            })
-          ) : (
-            <div className='flex gap-2 items-center pb-5'>
-              <p className='text-xl lg:text-2xl'>{comingSoonTitle} <br /> <small>{comingSoonNote}</small> </p>
-            </div>
-          )}
-        </div>
-      </div>
-      {/* content skill solution */}
-      <div className='border border-blue-200 p-5 mb-5'>
-        {/* title */}
-        <div className='flex gap-2 items-center pb-5'>
-          <RiMedalFill size={40} className='navbar-text-color' />
-          <p className='text-xl lg:text-2xl'> {titleSolution} :</p>
-        </div>
-        {/* layout skill solution */}
-        <div className='flex flex-wrap justify-center'>
-          {dataSkillSolutions !== "Data not found" && dataSkillSolutions !== "Internal Server Error" ? (
-            // loop data
-            dataSkillSolutions.map((skill: any, index: string) => {
-              return <ListItem
-                key={index}
-                name={skill.name}
-                logoUrl={"/assets/image/skills/tech/" + skill.image}
               />
             })
           ) : (

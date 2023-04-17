@@ -13,9 +13,6 @@ export default async function Page({ params: { lang } }: any) {
   // get skills tech from api
   const skillTechData = await getData(`skills?lang=${langValue}`, false)
   const skillTechValues = skillTechData.data
-  // get skills solution from api
-  const skillSolutionData = await getData(`skills?lang=${langValue}&category=solution`, false)
-  const skillSolutionValues = skillSolutionData.data
   // get languages from api
   const skillLanguageData = await getData(`languages`, false)
   const skillLanguageValues = skillLanguageData.data
@@ -27,10 +24,8 @@ export default async function Page({ params: { lang } }: any) {
         <SectionSkills
           title={titleSkill.title}
           titleTechnology={titleSkill.titleTechnology}
-          titleSolution={titleSkill.titleSolution}
           titleLanguage={titleSkill.titleLanguage}
           dataSkillTechs={skillTechValues}
-          dataSkillSolutions={skillSolutionValues}
           dataLanguages={skillLanguageValues}
           comingSoonTitle={titleSkill.titleComingSoon.title}
           comingSoonNote={titleSkill.titleComingSoon.note}
