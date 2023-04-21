@@ -5,7 +5,6 @@ import { packValueChecker } from '@/utils/functionlangChecker'
 // utils
 import { getData } from '@/utils/getData'
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 // import react icons
 import { RiEyeFill, RiCodeBoxFill } from 'react-icons/ri'
 // additional component
@@ -67,39 +66,40 @@ export default async function Page({ params: { lang, slug } }: any) {
           {/* right */}
           <div>
             {/* thumbnail */}
-            {projectDetailValue.image && 
-              <FullscreenImage 
-                src={"/assets/image/projects/" + projectDetailValue.image} 
-                alt={projectDetailValue.name} 
+            {projectDetailValue.image &&
+              <FullscreenImage
+                src={"/assets/image/projects/" + projectDetailValue.image}
+                alt={projectDetailValue.name}
                 width={500}
-                height={100}  
+                height={100}
               />}
           </div>
         </div>
         {/* detail image */}
-        <div className='flex flex-col items-center justify-center gap-5 pt-5'>
-          {/* detail */}
-          <p className='text-2xl font-semibold'>Detail</p>
-          <div className='flex flex-wrap justify-center gap-2'>
-            {/* detail attachment image */}
-            {projectDetailValue.images ? (
-              projectDetailValue.images.map((projectImage: any, index: string) => {
+        {projectDetailValue.images.length != 0 ? (
+          <div className='flex flex-col items-center justify-center gap-5 pt-5'>
+            {/* detail */}
+            <p className='text-2xl font-semibold'>Detail</p>
+            <div className='flex flex-wrap justify-center gap-2'>
+              {/* detail attachment image */}
+              {projectDetailValue.images.map((projectImage: any, index: string) => {
                 if (projectImage.attachment) {
                   return <div key={index}>
-                    <FullscreenImage 
-                      src={"/assets/image/projects/" + projectImage.attachment} 
+                    <FullscreenImage
+                      src={"/assets/image/projects/" + projectImage.attachment}
                       alt={projectImage.name}
                       width={300}
                       height={100}
                     />
                   </div>
                 }
-              })
-            ) : (
-              <div></div>
-            )}
+              })}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div></div>
+        )}
+
       </div>
     </>
   )

@@ -77,8 +77,8 @@ export default async function handler(
       const project: ProjectAttribute = {
         id: dataProject.dataValues.id,
         name: dataProject.dataValues.projects_translation.name,
-        createdAt: dataProject.dataValues.projects_translation.createdAt,
-        updatedAt: dataProject.dataValues.projects_translation.updatedAt,
+        createdAt: dataProject.dataValues.projectCreated,
+        updatedAt: dataProject.dataValues.projectUpdated,
         image: dataProject.dataValues.image,
         description: dataProject.dataValues.projects_translation.description,
         tags: dataProject.dataValues.projects_translation.tags,

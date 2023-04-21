@@ -7,20 +7,20 @@ import { RiMedalFill } from 'react-icons/ri';
 interface Props {
   name: string,
   description?: string,
-  logoUrl: string,
+  logoImage: string,
   url?: string,
 }
 
 // list item vertical
-const ListItemVertical = ({ name, description, logoUrl, url }: Props) => {
+const ListItemVertical = ({ name, description, logoImage, url }: Props) => {
   return <a href={url} target="_blank" className='p-5 flex flex-col items-center card-skill-hover gap-2'>
     {/* image */}
-    <Image src={logoUrl} alt={name} width={40} height={40} style={{ width: 'auto', height: 'auto' }} />
+    <Image src={logoImage} alt={name} width={250} height={250} style={{ width: 'auto', height: 'auto' }} />
     <div>
       {/* title */}
       <p className='text-xl font-semibold'>{name}</p>
       {/* description */}
-      <p>{description}</p>
+      <p style={{ width: '250px'}}>{description}</p>
     </div>
   </a>
 }
@@ -47,7 +47,8 @@ function SectionServices({ title, titleSolution, dataSkillSolutions, comingSoonT
               return <ListItemVertical
                 key={index}
                 name={skill.name}
-                logoUrl={"/assets/image/skills/tech/" + skill.image}
+                logoImage={"/assets/image/skills/solution/" + skill.image}
+                description={skill.description}
               />
             })
           ) : (

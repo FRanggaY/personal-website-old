@@ -2,8 +2,6 @@
 import '@/styles/theme.css';
 import '@/styles/globals.css';
 import { Providers } from './providers'
-import defaultSeoData from '@/data/json/seo/seoDefault.json'
-import { Fragment } from "react";
 import { Roboto } from 'next/font/google'
 
 const roboto = Roboto({
@@ -15,45 +13,33 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const seoData = defaultSeoData
-
   return (
     <html suppressHydrationWarning>
     <head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>{seoData.title}</title>
+      <title>{process.env.SEO_TITLE}</title>
       <meta name="robots" content="index,follow" />
-      <meta name="description" content={seoData.description} />
-      {seoData.twitter ? (
+      <meta name="description" content={process.env.SEO_DESCRIPTION} />
+      {process.env.SEO_TWITTER_SITE ? (
         <>
-          <meta name="twitter:card" content={seoData.twitter.cardType} />
-          <meta name="twitter:site" content={seoData.twitter.site} />
-          <meta name="twitter:creator" content={seoData.twitter.handle} />
+          <meta name="twitter:card" content={process.env.SEO_TWITTER_HANDLE} />
+          <meta name="twitter:site" content={process.env.SEO_TWITTER_SITE} />
+          <meta name="twitter:creator" content={process.env.SEO_TWITTER_CARDTYPE} />
         </>
       ) : null}
-      {seoData.openGraph ? (
+      {process.env.SEO_OPENGRAPH_URL ? (
         <>
-          <meta property="og:title" content={seoData.openGraph.title} />
-          <meta property="og:description" content={seoData.openGraph.description} />
-          <meta property="og:url" content={seoData.openGraph.url} />
-          <meta property="og:type" content={seoData.openGraph.type} />
-          {seoData.openGraph.images ? (
-            <>
-              {seoData.openGraph.images.map((image, index) => (
-                <Fragment key={index}>
-                  <meta property="og:image" content={image.url} />
-                  <meta property="og:image:alt" content={image.alt} />
-                </Fragment>
-              ))}
-            </>
-          ) : null}
-          <meta property="og:locale" content={seoData.openGraph.locale} />
-          <meta property="og:site_name" content={seoData.openGraph.site_name} />
+          <meta property="og:title" content={process.env.SEO_OPENGRAPH_TITLE} />
+          <meta property="og:description" content={process.env.SEO_OPENGRAPH_DESCRIPTION} />
+          <meta property="og:url" content={process.env.SEO_OPENGRAPH_URL} />
+          <meta property="og:type" content={process.env.SEO_OPENGRAPH_TYPE} />
+          <meta property="og:locale" content={process.env.SEO_OPENGRAPH_LOCALE} />
+          <meta property="og:site_name" content={process.env.SEO_OPENGRAPH_SITE_NAME} />
         </>
       ) : null}
       <link rel="icon" href="/favicon.ico" />
-      <link rel="shortcut icon" href={seoData.image} />
-      <link rel="apple-touch-icon" href={seoData.image} />
+      <link rel="shortcut icon" href={"/assets/image/my-logo.png"} />
+      <link rel="apple-touch-icon" href={"/assets/image/my-logo.png"} />
       <meta name="next-head-count" content="18" />
     </head>
     <body className={roboto.className}>

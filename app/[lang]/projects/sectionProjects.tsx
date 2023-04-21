@@ -35,7 +35,7 @@ const ButtonItemProjectPlatform = ({ title, logoUrl, url }: ProjectPlatformProps
 const ListItemProject = ({ updatedAt, title, image, url }: ProjectProps) => {
   return <a href={url} target='_blank' className='flex flex-col gap-2 items-center p-2 border-2 rounded-lg hover:border-blue-400' >
     {/* project image */}
-    {image && <Image src={image} alt={title} width={200} height={200} style={{ width: '100%', height: 'auto' }} priority={true} />}
+    {image && <Image src={"/assets/image/projects/" + image} alt={title} width={200} height={200} style={{ width: '100%', height: 'auto' }} priority={true} />}
     {/* project title */}
     <h2 className='font-semibold'>{title.toUpperCase()}</h2>
     {/* project date */}
@@ -112,7 +112,7 @@ function SectionProjects({ title, datas, langFormat, titleNotFound }: any) {
                   title={project.name}
                   updatedAt={project.updatedAt}
                   url={"projects/" + project.slug}
-                  image={"/assets/image/projects/" + project.image}
+                  image={project.image}
                 />
               })}
             </div>

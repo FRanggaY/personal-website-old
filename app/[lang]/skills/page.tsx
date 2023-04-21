@@ -1,4 +1,5 @@
 import React from 'react';
+import { Metadata } from 'next';
 // to handle language selection
 import { packValueChecker } from '@/utils/functionlangChecker'
 import { locales } from '@/data/dataTranslation'
@@ -6,6 +7,10 @@ import { locales } from '@/data/dataTranslation'
 import SectionSkills from './sectionSkills'
 // utils
 import { getData } from '@/utils/getData'
+
+export const metadata: Metadata = {
+  title: 'Skills | ' + process.env.YOURNAME,
+};
 
 export default async function Page({ params: { lang } }: any) {
   const langValue = packValueChecker(lang)

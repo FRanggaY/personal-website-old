@@ -27,7 +27,7 @@ export default async function handler(
     const limit = Number(perPage);
 
     const lang = (query.lang && query.lang) || 'en_US';
-    const targetPlatform = (query.platform && query.platform) || 'website';
+    const targetPlatform = (query.platform && query.platform);
     // find language specific with filter isActive = 1
     const dataLanguage = await Language.findOne({
       where: { isActive: '1', title: lang },
@@ -39,9 +39,18 @@ export default async function handler(
       // handle language if not found
       console.error(`Language selected : ${lang} not found or is not active.`);
     }
+    let targetPlatformFilter
+    if(targetPlatform){
+      targetPlatformFilter = {
+        name: targetPlatform
+      }
+    }
 
     // filter language specific and platform specific with pagination
     const { count, rows } = await Project.findAndCountAll({
+      order: [
+        ['projectUpdated', 'DESC'],
+      ],
       include: [
         {
           model: ProjectTranslation,
@@ -51,9 +60,7 @@ export default async function handler(
         },
         {
           model: ProjectPlatform,
-          where: {
-            name: targetPlatform
-          }
+          where: targetPlatformFilter
         },
       ],
       where: { isActive: '1'},
@@ -74,7 +81,7 @@ export default async function handler(
         projects: rows.map((project) => ({ // loop
           id: project.dataValues.id,
           name: project.dataValues.projects_translation.name,
-          updatedAt: project.dataValues.projects_translation.updatedAt,
+          updatedAt: project.dataValues.projectUpdated,
           slug: project.dataValues.projects_translation.slug,
           image: project.dataValues.image,
         })),

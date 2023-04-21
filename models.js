@@ -103,6 +103,8 @@ SkillTranslation.init({
 class Project extends Model {}
 Project.init({
   image: DataTypes.STRING,
+  projectCreated: DataTypes.STRING,
+  projectUpdated: DataTypes.STRING,
   createdAt: DataTypes.STRING,
   updatedAt: DataTypes.STRING,
   isActive: DataTypes.STRING,

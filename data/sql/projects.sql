@@ -5,6 +5,8 @@ DROP TABLE IF EXISTS projects
 CREATE TABLE projects (
 	id TEXT(5) NOT NULL, 
     "image" TEXT(65),
+	projectCreated TEXT(10) NOT NULL,
+	projectUpdated TEXT(10) NOT NULL,
 	createdAt TEXT(10) NOT NULL,
 	updatedAt TEXT(10) NOT NULL,
     isActive TEXT(1) DEFAULT (0) NOT NULL
