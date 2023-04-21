@@ -1,0 +1,40 @@
+{
+    "result": [
+        {
+            "id": "P001",
+            "title": "website",
+            "url": "projects?platform=website",
+            "logo": "/assets/image/platforms/website.png"
+        },
+        {
+            "id": "P002",
+            "title": "desktop",
+            "url": "projects?platform=desktop",
+            "logo": "/assets/image/platforms/desktop.png"
+        },
+        {
+            "id": "P003",
+            "title": "mobile",
+            "url": "projects?platform=mobile",
+            "logo": "/assets/image/platforms/mobile.png"
+        },
+        {
+            "id": "P004",
+            "title": "data",
+            "url": "projects?platform=data",
+            "logo": "/assets/image/platforms/data.png"
+        },
+        {
+            "id": "P005",
+            "title": "design",
+            "url": "projects?platform=design",
+            "logo": "/assets/image/platforms/design.png"
+        },
+        {
+            "id": "P0099",
+            "title": "others",
+            "url": "projects?platform=others",
+            "logo": "/assets/image/platforms/others.png"
+        }
+    ]
+}
