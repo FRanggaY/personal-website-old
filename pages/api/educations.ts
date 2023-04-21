@@ -7,20 +7,16 @@ interface EducationAttributes{
   title: string;
   degree: string;
   fieldOfStudy: string;
-  location?: string; // optional
+  // location?: string; // optional
   startDate: string;
   endDate: string;
-  description?: string; // optional
+  // description?: string; // optional
   logo: string;
   url?: string; // optional
 }
 
 // type educations
-type Educations = {
-  title: string;
-  description?: string; // optional
-  educations: EducationAttributes[];
-};
+type Educations = EducationAttributes[]
 
 export default async function handler(
   req: NextApiRequest,
@@ -46,8 +42,10 @@ export default async function handler(
       attributes: [
         'id', 'logo', 'url', 
         'educations_translation.title', 'educations_translation.degree', 'educations_translation.fieldOfStudy', 
-        'educations_translation.location', 'educations_translation.startDate', 'educations_translation.endDate', 
-        'educations_translation.description'
+        'educations_translation.startDate', 'educations_translation.endDate', 
+        // // old
+        // 'educations_translation.location', 'educations_translation.startDate', 'educations_translation.endDate', 
+        // 'educations_translation.description'
       ],
       include: [{
         model: EducationTranslation,
@@ -64,22 +62,18 @@ export default async function handler(
       res.status(response.status).json(response);
     }else{
       // initialize template
-      const educations: Educations = {
-        title: "My Educations", // can change
-        description: "", // can change
-        educations: dataEducation.map((education) => ({ // loop
-          id: education.dataValues.id,
-          logo : education.dataValues.logo,
-          url : education.dataValues.url,
-          title: education.dataValues.educations_translation.title,
-          degree: education.dataValues.educations_translation.degree,
-          fieldOfStudy: education.dataValues.educations_translation.fieldOfStudy,
-          location: education.dataValues.educations_translation.location,
-          startDate: education.dataValues.educations_translation.startDate,
-          endDate: education.dataValues.educations_translation.endDate,
-          description: education.dataValues.educations_translation.description,
-        })),
-      };
+      const educations: Educations = dataEducation.map((education) => ({ // loop
+        id: education.dataValues.id,
+        logo : education.dataValues.logo,
+        url : education.dataValues.url,
+        title: education.dataValues.educations_translation.title,
+        degree: education.dataValues.educations_translation.degree,
+        fieldOfStudy: education.dataValues.educations_translation.fieldOfStudy,
+        // location: education.dataValues.educations_translation.location,
+        startDate: education.dataValues.educations_translation.startDate,
+        endDate: education.dataValues.educations_translation.endDate,
+        // description: education.dataValues.educations_translation.description,
+      }));
       const response = { status: 200, data: educations };
       res.status(response.status).json(response);
     }

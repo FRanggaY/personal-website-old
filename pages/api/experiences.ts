@@ -7,22 +7,18 @@ interface ExperienceAttributes{
   url: string;
   image: string;
   name: string;
-  description?: string; // optional
+  // description?: string; // optional
   employmentType: string;
   companyName: string;
-  location?: string; // optional
-  locationType?: string;
+  // location?: string; // optional
+  locationType?: string; // optional
   startDate: string;
   endDate: string;
-  industry?: string; // optional
+  // industry?: string; // optional
 }
 
 // type experiences
-type Experiences = {
-  title: string;
-  description?: string; // optional
-  experiences: ExperienceAttributes[];
-};
+type Experiences = ExperienceAttributes[]
 
 export default async function handler(
   req: NextApiRequest,
@@ -47,9 +43,13 @@ export default async function handler(
     const dataExperience = await Experience.findAll({
       attributes: [
         'id', 'url', 'image', 
-        'experiences_translation.name', 'experiences_translation.description', 'experiences_translation.employmentType', 
-        'experiences_translation.companyName', 'experiences_translation.location', 'experiences_translation.locationType', 
-        'experiences_translation.startDate', 'experiences_translation.endDate', 'experiences_translation.industry'
+        'experiences_translation.name', 'experiences_translation.employmentType', 
+        'experiences_translation.companyName', 'experiences_translation.locationType', 
+        'experiences_translation.startDate', 'experiences_translation.endDate'
+        // // old
+        // 'experiences_translation.name', 'experiences_translation.description', 'experiences_translation.employmentType', 
+        // 'experiences_translation.companyName', 'experiences_translation.location', 'experiences_translation.locationType', 
+        // 'experiences_translation.startDate', 'experiences_translation.endDate', 'experiences_translation.industry'
       ],
       include: [{
         model: ExperienceTranslation,
@@ -66,24 +66,20 @@ export default async function handler(
       res.status(response.status).json(response);
     }else{
       // initialize template
-      const experiences: Experiences = {
-        title: "My Experience", // can change
-        description: "", // can change
-        experiences: dataExperience.map((experience) => ({ // loop
-          id: experience.dataValues.id,
-          url : experience.dataValues.url,
-          image : experience.dataValues.image,
-          name: experience.dataValues.experiences_translation.name,
-          description: experience.dataValues.experiences_translation.description,
-          employmentType: experience.dataValues.experiences_translation.employmentType,
-          companyName: experience.dataValues.experiences_translation.companyName,
-          location: experience.dataValues.experiences_translation.location,
-          locationType: experience.dataValues.experiences_translation.locationType,
-          startDate: experience.dataValues.experiences_translation.startDate,
-          endDate: experience.dataValues.experiences_translation.endDate,
-          industry: experience.dataValues.experiences_translation.industry,
-        })),
-      };
+      const experiences: Experiences = dataExperience.map((experience) => ({ // loop
+        id: experience.dataValues.id,
+        url : experience.dataValues.url,
+        image : experience.dataValues.image,
+        name: experience.dataValues.experiences_translation.name,
+        // description: experience.dataValues.experiences_translation.description,
+        employmentType: experience.dataValues.experiences_translation.employmentType,
+        companyName: experience.dataValues.experiences_translation.companyName,
+        // location: experience.dataValues.experiences_translation.location,
+        locationType: experience.dataValues.experiences_translation.locationType,
+        startDate: experience.dataValues.experiences_translation.startDate,
+        endDate: experience.dataValues.experiences_translation.endDate,
+        // industry: experience.dataValues.experiences_translation.industry,
+      }));
       const response = { status: 200, data: experiences };
       res.status(response.status).json(response);
     }

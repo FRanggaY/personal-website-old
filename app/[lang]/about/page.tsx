@@ -18,6 +18,12 @@ export default async function Page({ params: { lang } }: any) {
   // get social media from api
   const profileData = await getData(`profile`, false)
   const profileValue = profileData.data
+  // get experiences from api
+  const experienceData = await getData(`experiences?lang=${langValue}`, false)
+  const experienceValues = experienceData.data
+  // get educations from api
+  const educationData = await getData(`educations?lang=${langValue}`, false)
+  const educationValues = educationData.data
   
   return (
     <>
@@ -29,6 +35,10 @@ export default async function Page({ params: { lang } }: any) {
           profilePositions={profileValue.position}
           titleSocialMedia={titleAbout.titleSocialMedia}
           dataSocialMedias={profileValue.socialMedia}
+          titleExperience={titleAbout.titleExperience}
+          dataExperiences={experienceValues}
+          titleEducation={titleAbout.titleEducation}
+          dataEducations={educationValues}
           titleOther={titleAbout.titleOther}
           dataOthers={titleAbout.dataOthers}
         />
