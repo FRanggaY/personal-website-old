@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Language } from '@/models';
+// json
+import LanguageData from '@/data/locales/en_US/json/languages.json'
 
 // attributes language
 interface LanguageAttributes{
@@ -17,12 +18,8 @@ export default async function handler(
   res: NextApiResponse<{ status: number; data: Languages | string }>
 ) {
   try{
-    // find language specific with filter isActive = 1
-    const dataLanguage = await Language.findAll({
-      attributes: [
-        'name', 'proficieny', 'image', 
-      ],
-    });
+    // data language
+    const dataLanguage = await LanguageData.languages;
 
     // if dataLanguage not found
     if (dataLanguage.length === 0) {
@@ -30,11 +27,11 @@ export default async function handler(
       res.status(response.status).json(response);
     }else{
       // initialize template
-      const language: Languages = dataLanguage.map((language) => ({ // loop
-        id: language.dataValues.id,
-        name : language.dataValues.name,
-        proficieny : language.dataValues.proficieny,
-        image: language.dataValues.image,
+      const language: Languages = dataLanguage.map((item) => ({ // loop
+        id: item.id,
+        name : item.name,
+        proficieny : item.proficieny,
+        image: item.image,
       }));
       const response = { status: 200, data: language };
       res.status(response.status).json(response);

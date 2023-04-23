@@ -1,0 +1,17 @@
+{
+	"projects": [
+		{
+			"id": "p0001",
+			"image": "personal-portfolio\/4920231049thumbnail.png",
+			"createdAt": "3\/3\/2023",
+			"updatedAt": "4\/21\/2023",
+			"isActive": "1",
+			"projectCreated": "2021-08-07",
+			"projectUpdated": "2023-04-21",
+			"language": "in_ID",
+			"name": "Portfolio Pribadi",
+			"slug": "personal-portfolio",
+			"platform": "website"
+		}
+	]
+}

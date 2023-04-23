@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { SocialMedia } from '@/models';
+// json
+import SocialMediaData from '@/data/locales/en_US/json/socialMedia.json'
 
 // attributes socialmedia
 interface SocialMediaAttributes {
@@ -22,15 +23,10 @@ export default async function handler(
   res: NextApiResponse<{ status: number; data: Profile | string }>
 ) {
   try {
-    // find socialmedia specific with filter isActive = 1
-    const dataSocialMedia = await SocialMedia.findAll({
-      attributes: [
-        'id', 'name', 'url', 'image', 'username'
-      ],
-      where: { isActive: '1' },
-    });
+    // filter active = 1
+    const dataSocialMedia = await SocialMediaData.social_media.filter((item:any) => item.isActive == 1);
 
-    // if dataSocialMedia not found
+    // if data not found
     if (dataSocialMedia.length === 0) {
       const response = { status: 404, data: "Data not found" };
       res.status(response.status).json(response);
@@ -39,12 +35,12 @@ export default async function handler(
       const profile: Profile = {
         name: process.env.YOURNAME || '', // can change
         position: process.env.YOURPOSITIONJOB!.split(', ') || [''], // can change
-        socialMedia: dataSocialMedia.map((socialmedia) => ({ // loop
-          id: socialmedia.dataValues.id,
-          username: socialmedia.dataValues.username,
-          name: socialmedia.dataValues.name,
-          image: socialmedia.dataValues.image,
-          url: socialmedia.dataValues.url,
+        socialMedia: dataSocialMedia.map((socialmedia:any) => ({ // loop
+          id: socialmedia.id,
+          username: socialmedia.username,
+          name: socialmedia.name,
+          image: socialmedia.image,
+          url: socialmedia.url,
         })),
       };
       const response = { status: 200, data: profile };
