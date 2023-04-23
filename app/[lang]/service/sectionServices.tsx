@@ -15,7 +15,7 @@ interface Props {
 const ListItemVertical = ({ name, description, logoImage, url }: Props) => {
   return <a href={url} target="_blank" className='p-5 flex flex-col items-center card-skill-hover gap-2'>
     {/* image */}
-    <Image src={logoImage} alt={name} width={250} height={250} style={{ width: 'auto', height: 'auto' }} />
+    <Image src={logoImage} alt={name} width={250} height={250} style={{ width: 'auto', height: 'auto' }} priority={true} />
     <div>
       {/* title */}
       <p className='text-xl font-semibold'>{name}</p>

@@ -19,6 +19,7 @@ interface ProjectAttribute {
   image: string,
   description: string;
   tags?: string;
+  slug: string;
   platforms: string;
   urlPreview?: string;
   urlRepository?: string;
@@ -61,6 +62,7 @@ export default async function handler(
           image: dataProject.image,
           description: dataProject.description,
           tags: dataProject.tags,
+          slug: dataProject.slug,
           platforms: dataProject.platforms,
           urlPreview: dataProject.urlPreview,
           urlRepository: dataProject.urlRepository,
