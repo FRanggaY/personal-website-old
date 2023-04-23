@@ -13,11 +13,6 @@ const seo_description = 'This is about page';
 const seo_icon = '/assets/image/my-logo.png'
 
 export const metadata: Metadata = {
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
   title: seo_title,
   icons: {
     icon: seo_icon,
@@ -29,16 +24,12 @@ export const metadata: Metadata = {
     },
   },
   robots: {
-    index: false,
+    index: true,
     follow: true,
     nocache: true,
     googleBot: {
       index: true,
-      follow: false,
-      noimageindex: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      follow: true,
     },
   },
   openGraph: {
