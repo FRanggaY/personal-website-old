@@ -16,7 +16,7 @@ export default async function Page({ params: { lang } }: any) {
   const langValue = packValueChecker(lang)
   const titleSkill = locales[langValue].skills
   // get skills tech from api
-  const skillTechData = await getData(`skills?lang=${langValue}`, false)
+  const skillTechData = await getData(`skills/tech?lang=${langValue}`, false)
   const skillTechValues = skillTechData.data
   // get languages from api
   const skillLanguageData = await getData(`languages`, false)

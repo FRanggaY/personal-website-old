@@ -7,7 +7,8 @@ import Hero from '@/components/Hero'
 import SectionWorks from './sectionWorks'
 // utils
 import { getData } from '@/utils/getData'
-import platformData from '@/data/json/platformData.json'
+// json
+import projectPlatforms from '@/data/locales/en_US/json/projectPlatforms.json'
 
 export default async function Page({ params: { lang } }: any) {
   // get title from data
@@ -30,7 +31,7 @@ export default async function Page({ params: { lang } }: any) {
         {/* Section Hero */}
         <SectionWorks
           title={titleLanding.sectionTitle}
-          datas={platformData}
+          datas={projectPlatforms.project_platforms}
           langUrl={lang}
         />
       </div>

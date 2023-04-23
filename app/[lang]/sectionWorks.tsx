@@ -27,7 +27,7 @@ function SectionWorks({ title, datas, langUrl }: any) {
       {/* layout project platform */}
       <div className='pt-8 flex gap-5 flex-wrap justify-center'>
         {/* loop data */}
-        {datas.result.map((data: any, index: string) => {
+        {datas.map((data: any, index: string) => {
           return <ListItemProjectPlatform
             key={index}
             langUrl={langUrl}

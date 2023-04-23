@@ -34,32 +34,23 @@ export default async function Page({ params: { lang, slug } }: any) {
             {/* title */}
             <p className='text-3xl'>{projectDetailValue.name}</p>
             {/* date */}
-            <span className='text-gray-400'>{projectDetailValue.createdAt} - {projectDetailValue.updatedAt}</span>
+            <span className='text-gray-400'>{projectDetailValue.projectCreated} - {projectDetailValue.projectUpdated}</span>
             {/* description */}
             <p className='text-xl'>{projectDetailValue.description}</p>
             {/* tags */}
             <p className='text-xl'>{projectDetailValue.tags}</p>
-            <div>
-              {/* platforms */}
-              {projectDetailValue.platforms ? (
-                projectDetailValue.platforms.map((projectPlatform: any, index: string) => {
-                  return <div key={index} className='flex flex-wrap gap-5'>
-                    {/* preview button */}
-                    {projectPlatform.urlPreview && (
-                      <a href={projectPlatform.urlPreview} target="_blank" className='hover:bg-gray-200 p-2'>
-                        <RiEyeFill size={50} />
-                      </a>
-                    )}
-                    {/* repo button */}
-                    {projectPlatform.urlRepository && (
-                      <a href={projectPlatform.urlRepository} target="_blank" className='hover:bg-gray-200 p-2'>
-                        <RiCodeBoxFill size={50} />
-                      </a>
-                    )}
-                  </div>
-                })
-              ) : (
-                <div></div>
+            <div className='flex flex-wrap gap-5'>
+              {/* preview button */}
+              {projectDetailValue.urlPreview && (
+                <a href={projectDetailValue.urlPreview} target="_blank" className='hover:bg-gray-200 p-2'>
+                  <RiEyeFill size={50} />
+                </a>
+              )}
+              {/* repo button */}
+              {projectDetailValue.urlRepository && (
+                <a href={projectDetailValue.urlRepository} target="_blank" className='hover:bg-gray-200 p-2'>
+                  <RiCodeBoxFill size={50} />
+                </a>
               )}
             </div>
           </div>

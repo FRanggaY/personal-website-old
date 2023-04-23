@@ -1,0 +1,24 @@
+{
+	"languages": [
+		{
+			"id": "l0001",
+			"title": "in_ID",
+			"name": "Indonesia",
+			"proficieny": "Native",
+			"image": "flag-ind.png",
+			"createdAt": "3\/3\/2023",
+			"updatedAt": "3\/3\/2023",
+			"isActive": "1"
+		},
+		{
+			"id": "l0002",
+			"title": "en_US",
+			"name": "English",
+			"proficieny": "Limited",
+			"image": "flag-eng.png",
+			"createdAt": "3\/3\/2023",
+			"updatedAt": "3\/3\/2023",
+			"isActive": "1"
+		}
+	]
+}
