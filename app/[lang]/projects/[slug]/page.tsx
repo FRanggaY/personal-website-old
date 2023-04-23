@@ -96,11 +96,6 @@ export async function generateMetadata({ params: { lang, slug } }:any): Promise<
       creator: '@' + process.env.SEO_CREATOR,
       images: seo_image
     },
-    viewport: {
-      width: 'device-width',
-      initialScale: 1,
-      maximumScale: 1,
-    },
     icons: {
       icon: seo_icon,
       shortcut: seo_icon,
@@ -117,10 +112,6 @@ export async function generateMetadata({ params: { lang, slug } }:any): Promise<
       googleBot: {
         index: true,
         follow: false,
-        noimageindex: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
       },
     },
   }

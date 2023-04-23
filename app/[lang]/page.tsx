@@ -15,12 +15,7 @@ const seo_title = 'Home | ' + process.env.YOURNAME;
 const seo_description = 'This is home page';
 const seo_icon = '/assets/image/my-logo.png'
 
-export const metadata: Metadata = {
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
+export const metadata = {
   title: seo_title,
   description: seo_description,
   icons: {
@@ -39,19 +34,15 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: false,
-      noimageindex: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
     },
   },
   openGraph: {
     title: seo_title,
     description: seo_description,
     url:  process.env.SEO_URL,
-    siteName: process.env.SEO_SITE_NAME,
-    locale: process.env.SEO_LOCALE,
     type: 'website',
+    locale: process.env.SEO_LOCALE,
+    siteName: process.env.SEO_SITE_NAME,
   },
   twitter: {
     card: 'summary_large_image',
