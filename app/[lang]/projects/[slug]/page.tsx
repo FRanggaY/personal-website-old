@@ -10,9 +10,128 @@ import { RiEyeFill, RiCodeBoxFill } from 'react-icons/ri'
 // additional component
 import FullscreenImage from '@/components/FullScreenImage';
 
+interface ProjectDetailProps {
+  projectDetailValue: any;
+}
+
+function ProjectDetail({ projectDetailValue }: ProjectDetailProps) {
+  return (
+    <div>
+      <p className='text-3xl'>{projectDetailValue.name}</p>
+      <span className='text-gray-400'>{projectDetailValue.projectCreated} - {projectDetailValue.projectUpdated}</span>
+      <p className='text-xl'>{projectDetailValue.description}</p>
+      <p className='text-xl'>{projectDetailValue.tags}</p>
+      <div className='flex flex-wrap gap-5'>
+        {projectDetailValue.urlPreview && (
+          <a href={projectDetailValue.urlPreview} target="_blank" className='hover:bg-gray-200 p-2'>
+            <RiEyeFill size={50} />
+          </a>
+        )}
+        {projectDetailValue.urlRepository && (
+          <a href={projectDetailValue.urlRepository} target="_blank" className='hover:bg-gray-200 p-2'>
+            <RiCodeBoxFill size={50} />
+          </a>
+        )}
+      </div>
+    </div>
+  )
+}
+
+interface ProjectImagesProps {
+  images: any;
+}
+
+function ProjectImages({ images }: ProjectImagesProps) {
+  return (
+    <div className='flex flex-col items-center justify-center gap-5 pt-5'>
+      <p className='text-2xl font-semibold'>Detail</p>
+      <div className='flex flex-wrap justify-center gap-2'>
+        {images.map((item: any, index: string) => {
+          if (item.attachment) {
+            return (
+              <div key={index}>
+                <FullscreenImage
+                  src={"/assets/image/projects/" + item.attachment}
+                  alt={item.name}
+                  width={300}
+                  height={100}
+                />
+              </div>
+            )
+          }
+        })}
+      </div>
+    </div>
+  )
+}
+
+export async function generateMetadata({ params: { lang, slug } }:any): Promise<Metadata> {
+  const langValue = packValueChecker(lang)
+  // get project detail from api
+  const projectDetailData = await getData(`projects/${slug}?lang=${langValue}`, false)
+  const projectDetailValue = projectDetailData.data
+
+  const seo_title = projectDetailValue.name + ' | ' + process.env.YOURNAME;
+  const seo_description = projectDetailValue.description || '';
+  const seo_site = process.env.SEO_URL + "/projects/" + projectDetailValue.slug
+  const seo_image = process.env.SEO_URL_ASSET + "/assets/image/projects/" + projectDetailValue.image
+
+  return { 
+    title: seo_title,
+    description: seo_description,
+    openGraph: {
+      title: seo_title,
+      description: seo_description,
+      url:  process.env.SEO_URL,
+      siteName: seo_site,
+      type: 'website',
+      images: seo_image
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: seo_title,
+      description: seo_description,
+      site: '@' + process.env.SEO_CREATOR,
+      creator: '@' + process.env.SEO_CREATOR,
+      images: seo_image
+    },
+  }
+}
+
+const seo_icon = '/assets/image/my-logo.png'
+
 export const metadata: Metadata = {
-  title: 'Project Detail | ' + process.env.YOURNAME,
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
+  icons: {
+    icon: seo_icon,
+    shortcut: seo_icon,
+    apple: seo_icon,
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: seo_icon,
+    },
+  },
+  robots: {
+    index: false,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
+
+
+
 
 export default async function Page({ params: { lang, slug } }: any) {
   const langValue = packValueChecker(lang)
@@ -30,30 +149,7 @@ export default async function Page({ params: { lang, slug } }: any) {
       <div className='md:px-48 px-4 pb-10 pt-28'>
         <div className='flex flex-wrap justify-center gap-5'>
           {/* left */}
-          <div>
-            {/* title */}
-            <p className='text-3xl'>{projectDetailValue.name}</p>
-            {/* date */}
-            <span className='text-gray-400'>{projectDetailValue.projectCreated} - {projectDetailValue.projectUpdated}</span>
-            {/* description */}
-            <p className='text-xl'>{projectDetailValue.description}</p>
-            {/* tags */}
-            <p className='text-xl'>{projectDetailValue.tags}</p>
-            <div className='flex flex-wrap gap-5'>
-              {/* preview button */}
-              {projectDetailValue.urlPreview && (
-                <a href={projectDetailValue.urlPreview} target="_blank" className='hover:bg-gray-200 p-2'>
-                  <RiEyeFill size={50} />
-                </a>
-              )}
-              {/* repo button */}
-              {projectDetailValue.urlRepository && (
-                <a href={projectDetailValue.urlRepository} target="_blank" className='hover:bg-gray-200 p-2'>
-                  <RiCodeBoxFill size={50} />
-                </a>
-              )}
-            </div>
-          </div>
+          <ProjectDetail projectDetailValue={projectDetailValue} />
           {/* right */}
           <div>
             {/* thumbnail */}
@@ -68,25 +164,7 @@ export default async function Page({ params: { lang, slug } }: any) {
         </div>
         {/* detail image */}
         {projectDetailValue.images.length != 0 ? (
-          <div className='flex flex-col items-center justify-center gap-5 pt-5'>
-            {/* detail */}
-            <p className='text-2xl font-semibold'>Detail</p>
-            <div className='flex flex-wrap justify-center gap-2'>
-              {/* detail attachment image */}
-              {projectDetailValue.images.map((projectImage: any, index: string) => {
-                if (projectImage.attachment) {
-                  return <div key={index}>
-                    <FullscreenImage
-                      src={"/assets/image/projects/" + projectImage.attachment}
-                      alt={projectImage.name}
-                      width={300}
-                      height={100}
-                    />
-                  </div>
-                }
-              })}
-            </div>
-          </div>
+          <ProjectImages images={projectDetailValue.images} />
         ) : (
           <div></div>
         )}

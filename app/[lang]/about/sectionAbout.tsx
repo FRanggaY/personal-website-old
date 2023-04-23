@@ -45,7 +45,7 @@ interface AboutOtherProps {
 const ListItemAboutSocialMedia = ({ name, description, logoUrl, url, username }: AboutSocialMediaProps) => {
   return <a href={url} target="_blank" className='p-5 flex items-center card-skill-hover gap-2'>
     {/* image */}
-    <Image src={logoUrl} alt={name} width={40} height={40} style={{ width: 'auto', height: 'auto' }} />
+    <Image src={logoUrl} alt={name} width={40} height={40} style={{ width: 'auto', height: 'auto' }} priority={true} />
     <div>
       {/* title */}
       <p className='text-xl font-semibold'>{username ?? name}</p>
@@ -60,8 +60,8 @@ const ListItemAboutExperience = ({ name, imageUrl, url, companyName, employmentT
   if (url) {
     return <a href={url} target="_blank" className='p-5 flex flex-col items-center card-skill-hover gap-2'>
       {/* image */}
-      <div style={{ width: '200px', height: '200px' }}>
-        <Image src={"/assets/image/experiences/" + imageUrl} alt={name} width={200} height={200} style={{ width: 'auto', height: 'auto' }} />
+      <div style={{ width: '100%', height: '100%' }}>
+        <Image src={"/assets/image/experiences/" + imageUrl} alt={name} width={200} height={200} style={{ width: 'auto', height: '150px' }} priority={true} />
       </div>
       <div>
         {/* list */}
@@ -73,7 +73,7 @@ const ListItemAboutExperience = ({ name, imageUrl, url, companyName, employmentT
   } else { // if url empty so image set up with company name title
     return <div className='p-5 flex flex-col items-center card-skill-hover gap-2'>
       {/* companyName */}
-      <div style={{ width: '200px', height: '200px' }} className='flex items-center justify-items-center'>
+      <div style={{ width: '100%', height: '150px' }} className='flex items-center justify-items-center'>
         <p className='text-xl font-semibold text-center'>{companyName}</p>
       </div>
       <div>
@@ -91,9 +91,7 @@ const ListItemAboutEducation = ({ url, logoUrl, title, degree, fieldOfStudy, sta
   if (url) {
     return <a href={url} target="_blank" className='p-5 flex flex-col items-center card-skill-hover gap-2'>
       {/* image */}
-      <div style={{ width: '150px', height: '150px' }}>
-        <Image src={"/assets/image/educations/" + logoUrl} alt={title} width={200} height={200} style={{ width: 'auto', height: 'auto' }} />
-      </div>
+      <Image src={"/assets/image/educations/" + logoUrl} alt={title} width={150} height={150} style={{ width: 'auto', height: '150px' }} priority={true} />
       <div>
         {/* list */}
         <p className='text-xl font-semibold'>{degree} - {fieldOfStudy}</p>
