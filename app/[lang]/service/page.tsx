@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: seo_title,
     description: seo_description,
     url:  process.env.SEO_URL + "/service",
-    siteName: process.env.SEO_SITE_NAME,
+    siteName: seo_title,
     locale: process.env.SEO_LOCALE,
     type: 'website',
   },

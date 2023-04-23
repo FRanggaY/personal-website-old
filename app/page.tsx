@@ -35,21 +35,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  openGraph: {
-    title: seo_title,
-    description: seo_description,
-    url:  process.env.SEO_URL,
-    siteName: process.env.SEO_SITE_NAME,
-    locale: process.env.SEO_LOCALE,
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: seo_title,
-    description: seo_description,
-    site: process.env.SEO_SITE_NAME,
-    creator: '@' + process.env.SEO_CREATOR
-  },
 };
 
 export default async function Home() {

@@ -75,6 +75,7 @@ export async function generateMetadata({ params: { lang, slug } }:any): Promise<
   const seo_description = projectDetailValue.description || '';
   const seo_site = process.env.SEO_URL + "/projects/" + projectDetailValue.slug
   const seo_image = process.env.SEO_URL_ASSET + "/assets/image/projects/" + projectDetailValue.image
+  const seo_icon = '/assets/image/my-logo.png'
 
   return { 
     title: seo_title,
@@ -82,8 +83,8 @@ export async function generateMetadata({ params: { lang, slug } }:any): Promise<
     openGraph: {
       title: seo_title,
       description: seo_description,
-      url:  process.env.SEO_URL,
-      siteName: seo_site,
+      url:  seo_site,
+      siteName: seo_title,
       type: 'website',
       images: seo_image
     },
@@ -95,43 +96,35 @@ export async function generateMetadata({ params: { lang, slug } }:any): Promise<
       creator: '@' + process.env.SEO_CREATOR,
       images: seo_image
     },
+    viewport: {
+      width: 'device-width',
+      initialScale: 1,
+      maximumScale: 1,
+    },
+    icons: {
+      icon: seo_icon,
+      shortcut: seo_icon,
+      apple: seo_icon,
+      other: {
+        rel: 'apple-touch-icon-precomposed',
+        url: seo_icon,
+      },
+    },
+    robots: {
+      index: false,
+      follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: false,
+        noimageindex: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
   }
 }
-
-const seo_icon = '/assets/image/my-logo.png'
-
-export const metadata: Metadata = {
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  icons: {
-    icon: seo_icon,
-    shortcut: seo_icon,
-    apple: seo_icon,
-    other: {
-      rel: 'apple-touch-icon-precomposed',
-      url: seo_icon,
-    },
-  },
-  robots: {
-    index: false,
-    follow: true,
-    nocache: true,
-    googleBot: {
-      index: true,
-      follow: false,
-      noimageindex: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-};
-
-
-
 
 export default async function Page({ params: { lang, slug } }: any) {
   const langValue = packValueChecker(lang)
