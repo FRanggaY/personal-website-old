@@ -83,8 +83,8 @@ export async function generateMetadata({ params: { lang, slug } }:any): Promise<
     openGraph: {
       title: seo_title,
       description: seo_description,
-      url:  process.env.SEO_URL,
-      siteName: seo_site,
+      url:  seo_site,
+      siteName: seo_title,
       type: 'website',
       images: seo_image
     },

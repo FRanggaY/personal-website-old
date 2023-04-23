@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: seo_title,
     description: seo_description,
-    site: process.env.SEO_SITE_NAME,
+    site: '@' + process.env.SEO_CREATOR,
     creator: '@' + process.env.SEO_CREATOR
   },
 };

@@ -44,8 +44,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: seo_title,
     description: seo_description,
-    url:  process.env.SEO_URL,
-    siteName: process.env.SEO_SITE_NAME + "/projects",
+    url:  process.env.SEO_URL + "/projects",
+    siteName: seo_title,
     locale: process.env.SEO_LOCALE,
     type: 'website',
   },
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: seo_title,
     description: seo_description,
-    site: process.env.SEO_SITE_NAME + "/projects",
+    site: '@' + process.env.SEO_CREATOR,
     creator: '@' + process.env.SEO_CREATOR
   },
 };
