@@ -15,7 +15,7 @@ const seo_title = 'Home | ' + process.env.YOURNAME;
 const seo_description = 'This is home page';
 const seo_icon = '/assets/image/my-logo.png'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: seo_title,
   description: seo_description,
   icons: {

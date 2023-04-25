@@ -1,6 +1,8 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import { usePathname, useRouter } from "next/navigation";
+// framer motion
+import { motion, AnimatePresence } from "framer-motion" 
 // additional component
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -35,8 +37,15 @@ export default function PublicLayout({
         {/* navbar */}
         <Navbar currentPath={currentPath} router={router} />
       </header>
-      {/* content */}
-      <main>{children}</main>
+      <AnimatePresence>
+        {/* content */}
+        <motion.main
+          initial={{opacity: 0, y: 15}}
+          animate={{opacity: 1, y: 0}}
+          exit={{opacity: 0, y: 15}}
+          transition={{ delay: 0.25}}
+        >{children}</motion.main>
+      </AnimatePresence>
       {/* footer */}
       <footer>
         <Footer currentPath={currentPath} socialMedia={dataProfile.socialMedia} />

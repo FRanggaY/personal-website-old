@@ -1,128 +1,28 @@
-import Image from 'next/image'
+'use client'
 import React from 'react'
+// framer motion
+import { motion } from "framer-motion"
+// additional component
+import { ListItemExperience, experienceVariants } from '@/components/Card/About/CardExperience'
+import { ListItemEducation, educationVariants } from '@/components/Card/About/CardEducation'
+import { ListItemSocialMedia, socialMediaVariants } from '@/components/Card/About/CardSocialMedia'
+import { ListItemOther, otherVariants } from '@/components/Card/About/CardOther'
 // logo from react icons
 import { RiProfileFill, RiShieldStarFill, RiMapPinUserFill, RiBriefcase4Fill } from 'react-icons/ri'
 
-// about social media props
-interface AboutSocialMediaProps {
-  name: string,
-  description?: string,
-  logoUrl: string,
-  url?: string,
-  username?: string,
-}
-// about experience props
-interface AboutExperienceProps {
-  url?: string,
-  imageUrl: string,
-  name: string,
-  employmentType?: string,
-  companyName: string,
-  locationType?: string,
-  startDate: string,
-  endDate: string,
-}
-
-// about education props
-interface AboutEducationProps {
-  url?: string,
-  logoUrl: string,
-  title: string,
-  degree?: string,
-  fieldOfStudy: string,
-  startDate: string,
-  endDate: string,
-}
-
-// about other props
-interface AboutOtherProps {
-  name: string,
-  logo: any,
-  url: string,
-}
-
-// list item about social media
-const ListItemAboutSocialMedia = ({ name, description, logoUrl, url, username }: AboutSocialMediaProps) => {
-  return <a href={url} target="_blank" className='p-5 flex items-center card-skill-hover gap-2'>
-    {/* image */}
-    <Image src={logoUrl} alt={name} width={40} height={40} style={{ width: 'auto', height: 'auto' }} priority={true} />
-    <div>
-      {/* title */}
-      <p className='text-xl font-semibold'>{username ?? name}</p>
-      {/* description */}
-      <p>{description}</p>
-    </div>
-  </a>
-}
-
-// list item about experience
-const ListItemAboutExperience = ({ name, imageUrl, url, companyName, employmentType, locationType, startDate, endDate }: AboutExperienceProps) => {
-  if (url) {
-    return <a href={url} target="_blank" className='p-5 flex flex-col items-center card-skill-hover gap-2'>
-      {/* image */}
-      <div style={{ width: '100%', height: '100%' }}>
-        <Image src={"/assets/image/experiences/" + imageUrl} alt={name} width={200} height={200} style={{ width: 'auto', height: '150px' }} priority={true} />
-      </div>
-      <div>
-        {/* list */}
-        <span>{employmentType} - {locationType}</span>
-        <p className='text-xl font-semibold'>{name}</p>
-        <span>{startDate} - {endDate}</span>
-      </div>
-    </a>
-  } else { // if url empty so image set up with company name title
-    return <div className='p-5 flex flex-col items-center card-skill-hover gap-2'>
-      {/* companyName */}
-      <div style={{ width: '100%', height: '150px' }} className='flex items-center justify-items-center'>
-        <p className='text-xl font-semibold text-center'>{companyName}</p>
-      </div>
-      <div>
-        {/* list */}
-        <span>{employmentType} - {locationType}</span>
-        <p className='text-xl font-semibold'>{name}</p>
-        <span>{startDate} - {endDate}</span>
-      </div>
-    </div>
-  }
-}
-
-// list item about experience
-const ListItemAboutEducation = ({ url, logoUrl, title, degree, fieldOfStudy, startDate, endDate }: AboutEducationProps) => {
-  if (url) {
-    return <a href={url} target="_blank" className='p-5 flex flex-col items-center card-skill-hover gap-2'>
-      {/* image */}
-      <Image src={"/assets/image/educations/" + logoUrl} alt={title} width={150} height={150} style={{ width: 'auto', height: '150px' }} priority={true} />
-      <div>
-        {/* list */}
-        <p className='text-xl font-semibold'>{degree} - {fieldOfStudy}</p>
-        <span>{startDate} - {endDate}</span>
-      </div>
-    </a>
-  } else { // if url empty so image set up with company name title
-    return <div className='p-5 flex flex-col items-center card-skill-hover gap-2'>
-      {/* title */}
-      <div style={{ width: '150px', height: '150px' }} className='flex items-center justify-items-center'>
-        <p className='text-xl font-semibold text-center'>{title}</p>
-      </div>
-      <div>
-        {/* list */}
-        <p className='text-xl font-semibold'>{degree} - {fieldOfStudy}</p>
-        <span>{startDate} - {endDate}</span>
-      </div>
-    </div>
-  }
-}
-
-// list item about other
-const ListItemAboutOther = ({ name, logo, url }: AboutOtherProps) => {
-  return <a href={url} target="_blank" className='p-5 flex items-center card-skill-hover gap-2'>
-    {/* logo */}
-    {logo}
-    <div>
-      {/* title */}
-      <p className='text-xl font-semibold'>{name}</p>
-    </div>
-  </a>
+// props
+interface Props {
+  title: string;
+  profileName: string;
+  profilePositions: any;
+  titleSocialMedia: string;
+  dataSocialMedias: any;
+  titleExperience: string;
+  dataExperiences: any;
+  titleEducation: string;
+  dataEducations: any;
+  titleOther: string;
+  dataOthers: any;
 }
 
 // data list other
@@ -137,7 +37,7 @@ const dataListOther: any = {
   },
 }
 
-function SectionAbout({ title, profileName, profilePositions, titleSocialMedia, dataSocialMedias, titleExperience, dataExperiences, titleEducation, dataEducations, titleOther, dataOthers }: any) {
+function SectionAbout({ title, profileName, profilePositions, titleSocialMedia, dataSocialMedias, titleExperience, dataExperiences, titleEducation, dataEducations, titleOther, dataOthers }: Props) {
   return (
     <div>
       {/* title */}
@@ -163,11 +63,16 @@ function SectionAbout({ title, profileName, profilePositions, titleSocialMedia, 
           <p className='text-xl lg:text-2xl'> {titleExperience} :</p>
         </div>
         {/* layout experience */}
-        <div className='flex flex-wrap justify-center items-end'>
+        <motion.div
+          variants={experienceVariants}
+          initial="hidden"
+          animate="show"
+          className='flex flex-wrap justify-center items-end'
+        >
           {dataExperiences !== "Data not found" && dataExperiences !== "Internal Server Error" ? (
             // loop data
             dataExperiences.map((experience: any, index: string) => {
-              return <ListItemAboutExperience
+              return <ListItemExperience
                 key={index}
                 name={experience.name}
                 companyName={experience.companyName}
@@ -182,7 +87,7 @@ function SectionAbout({ title, profileName, profilePositions, titleSocialMedia, 
           ) : (
             <div></div>
           )}
-        </div>
+        </motion.div>
       </div>
       {/* content educations */}
       <div className='border border-blue-200 p-5 mb-5'>
@@ -191,11 +96,16 @@ function SectionAbout({ title, profileName, profilePositions, titleSocialMedia, 
           <p className='text-xl lg:text-2xl'> {titleEducation} :</p>
         </div>
         {/* layout educations */}
-        <div className='flex flex-wrap justify-center items-end'>
+        <motion.div 
+          variants={educationVariants}
+          initial="hidden"
+          animate="show"
+          className='flex flex-wrap justify-center items-end'
+        >
           {dataEducations !== "Data not found" && dataEducations !== "Internal Server Error" ? (
             // loop data
             dataEducations.map((education: any, index: string) => {
-              return <ListItemAboutEducation
+              return <ListItemEducation
                 key={index}
                 title={education.title}
                 degree={education.degree}
@@ -209,7 +119,7 @@ function SectionAbout({ title, profileName, profilePositions, titleSocialMedia, 
           ) : (
             <div></div>
           )}
-        </div>
+        </motion.div>
       </div>
       {/* content social media */}
       <div className='border border-blue-200 p-5 mb-5'>
@@ -218,11 +128,16 @@ function SectionAbout({ title, profileName, profilePositions, titleSocialMedia, 
           <p className='text-xl lg:text-2xl'> {titleSocialMedia} :</p>
         </div>
         {/* layout social media */}
-        <div className='flex flex-wrap justify-center'>
+        <motion.div
+          variants={socialMediaVariants}
+          initial="hidden"
+          animate="show"
+          className='flex flex-wrap justify-center'
+        >
           {dataSocialMedias !== "Data not found" && dataSocialMedias !== "Internal Server Error" ? (
             // loop data
             dataSocialMedias.map((socialmedia: any, index: string) => {
-              return <ListItemAboutSocialMedia
+              return <ListItemSocialMedia
                 key={index}
                 name={socialmedia.name}
                 username={socialmedia.username}
@@ -233,7 +148,7 @@ function SectionAbout({ title, profileName, profilePositions, titleSocialMedia, 
           ) : (
             <div></div>
           )}
-        </div>
+        </motion.div>
       </div>
       {/* content others */}
       <div className='border border-blue-200 p-5 mb-5'>
@@ -242,11 +157,16 @@ function SectionAbout({ title, profileName, profilePositions, titleSocialMedia, 
           <p className='text-xl lg:text-2xl'> {titleOther} :</p>
         </div>
         {/* layout others */}
-        <div className='flex flex-col justify-center px-5'>
+        <motion.div
+          variants={otherVariants}
+          initial="hidden"
+          animate="show"
+          className='flex flex-col justify-center px-5'
+        >
           {dataOthers !== "Data not found" && dataOthers !== "Internal Server Error" ? (
             // loop data
             dataOthers.map((other: any, index: string) => {
-              return <ListItemAboutOther
+              return <ListItemOther
                 key={index}
                 name={other.title}
                 logo={dataListOther[other.codename].logo}
@@ -256,7 +176,7 @@ function SectionAbout({ title, profileName, profilePositions, titleSocialMedia, 
           ) : (
             <div></div>
           )}
-        </div>
+        </motion.div>
       </div>
     </div>
   )

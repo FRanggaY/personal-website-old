@@ -1,31 +1,24 @@
-import Image from 'next/image'
+'use client'
 import React from 'react'
+// framer motion
+import { motion } from "framer-motion" 
 // logo from react icons
-import { RiToolsFill, RiGlobeFill, RiMedalFill } from 'react-icons/ri';
+import { RiToolsFill, RiGlobeFill } from 'react-icons/ri';
+// additional component
+import { ListItemSkill, skillVariants } from '@/components/Card/CardSkill';
 
 // props
 interface Props {
-  name: string,
-  description?: string,
-  logoUrl: string,
-  url?: string,
+  title: string;
+  titleTechnology: string;
+  titleLanguage: string;
+  dataSkillTechs: any;
+  dataLanguages: any;
+  comingSoonTitle: string;
+  comingSoonNote: string;
 }
 
-// list item
-const ListItem = ({ name, description, logoUrl, url }: Props) => {
-  return <a href={url} target="_blank" className='p-5 flex items-center card-skill-hover gap-2'>
-    {/* image */}
-    <Image src={logoUrl} alt={name} width={40} height={40} style={{ width: 'auto', height: 'auto' }} priority={true} />
-    <div>
-      {/* title */}
-      <p className='text-xl font-semibold'>{name}</p>
-      {/* description */}
-      <p>{description}</p>
-    </div>
-  </a>
-}
-
-function SectionSkills({ title, titleTechnology, titleLanguage, dataSkillTechs, dataLanguages, comingSoonTitle, comingSoonNote }: any) {
+function SectionSkills({ title, titleTechnology, titleLanguage, dataSkillTechs, dataLanguages, comingSoonTitle, comingSoonNote }: Props) {
   return (
     <div>
       {/* title */}
@@ -40,11 +33,16 @@ function SectionSkills({ title, titleTechnology, titleLanguage, dataSkillTechs, 
           <p className='text-xl lg:text-2xl'> {titleTechnology} :</p>
         </div>
         {/* layout skill tech */}
-        <div className='flex flex-wrap justify-center'>
+        <motion.div
+          variants={skillVariants}
+          initial="hidden"
+          animate="show"
+          className='flex flex-wrap justify-center'
+        >
           {dataSkillTechs !== "Data not found" && dataSkillTechs !== "Internal Server Error" ? (
             // loop data
             dataSkillTechs.map((skill: any, index: string) => {
-              return <ListItem
+              return <ListItemSkill
                 key={index}
                 name={skill.name}
                 description={skill.description}
@@ -57,7 +55,7 @@ function SectionSkills({ title, titleTechnology, titleLanguage, dataSkillTechs, 
               <p className='text-xl lg:text-2xl'>{comingSoonTitle} <br /> <small>{comingSoonNote}</small> </p>
             </div>
           )}
-        </div>
+        </motion.div>
       </div>
       {/* content languages */}
       <div className='border border-blue-200 p-5 mb-5'>
@@ -67,11 +65,16 @@ function SectionSkills({ title, titleTechnology, titleLanguage, dataSkillTechs, 
           <p className='text-xl lg:text-2xl'> {titleLanguage} :</p>
         </div>
         {/* layout languages */}
-        <div className='flex flex-wrap justify-center'>
+        <motion.div 
+          variants={skillVariants}
+          initial="hidden"
+          animate="show"
+          className='flex flex-wrap justify-center'
+        >
           {dataLanguages !== "Data not found" && dataLanguages !== "Internal Server Error" ? (
             // loop data
             dataLanguages.map((language: any, index: string) => {
-              return <ListItem
+              return <ListItemSkill
                 key={index}
                 name={language.name}
                 description={language.proficieny}
@@ -83,7 +86,7 @@ function SectionSkills({ title, titleTechnology, titleLanguage, dataSkillTechs, 
               <p className='text-xl lg:text-2xl'>{comingSoonTitle} <br /> <small>{comingSoonNote}</small> </p>
             </div>
           )}
-        </div>
+        </motion.div>
       </div>
     </div>
   )
