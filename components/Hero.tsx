@@ -1,8 +1,49 @@
+"use client"
 import React from 'react'
+// framer motion
+import { motion } from "framer-motion" 
 
-function Hero({ greeting, name, positions, greetingNote }: any) {
+// props
+interface heroProps {
+  greeting: string,
+  name: string,
+  positions: string[],
+  greetingNote: string,
+}
+
+// framer motion
+export const heroVariants:any = {
+  hidden: { opacity : 0},
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3
+    }
+  }
+}
+
+export const heroAnimate:any = {
+  hidden: { 
+    opacity : 0,
+    x: 30
+  },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 2
+    }
+  }
+}
+
+function Hero({ greeting, name, positions, greetingNote }: heroProps) {
   return (
-    <div className='flex items-center justify-center h-screen bg-fixed bg-center bg-cover img-custom'>
+    <motion.div 
+      variants={heroVariants}
+      initial="hidden"
+      animate="show"
+      className='flex items-center justify-center h-screen bg-fixed bg-center bg-cover img-custom'
+    >
       {/* Overlay */}
       <div className='absolute top-0 left-0 right-0 bottom-0 bg-black/70 z-[2]' />
       <div className='p-5 text-white z-[2] mt-[-10rem]'>
@@ -16,13 +57,16 @@ function Hero({ greeting, name, positions, greetingNote }: any) {
         <div className='flex gap-4 flex-wrap'>
           {positions.map((item: any, index: any) => (
             // position
-            <div key={index} className="px-8 py-2 border-l-2 border-b-2 border-blue-400 rounded-md">
+            <motion.div 
+              key={index}
+              variants={heroAnimate}
+              className="px-8 py-2 border-l-2 border-b-2 border-blue-400 rounded-md">
               <h3>{item}</h3>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

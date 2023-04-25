@@ -5,65 +5,8 @@ import { packValueChecker } from '@/utils/functionlangChecker'
 // utils
 import { getData } from '@/utils/getData'
 import { notFound } from 'next/navigation';
-// import react icons
-import { RiEyeFill, RiCodeBoxFill } from 'react-icons/ri'
 // additional component
-import FullscreenImage from '@/components/FullScreenImage';
-
-interface ProjectDetailProps {
-  projectDetailValue: any;
-}
-
-function ProjectDetail({ projectDetailValue }: ProjectDetailProps) {
-  return (
-    <div>
-      <p className='text-3xl'>{projectDetailValue.name}</p>
-      <span className='text-gray-400'>{projectDetailValue.projectCreated} - {projectDetailValue.projectUpdated}</span>
-      <p className='text-xl'>{projectDetailValue.description}</p>
-      <p className='text-xl'>{projectDetailValue.tags}</p>
-      <div className='flex flex-wrap gap-5'>
-        {projectDetailValue.urlPreview && (
-          <a href={projectDetailValue.urlPreview} target="_blank" className='hover:bg-gray-200 p-2'>
-            <RiEyeFill size={50} />
-          </a>
-        )}
-        {projectDetailValue.urlRepository && (
-          <a href={projectDetailValue.urlRepository} target="_blank" className='hover:bg-gray-200 p-2'>
-            <RiCodeBoxFill size={50} />
-          </a>
-        )}
-      </div>
-    </div>
-  )
-}
-
-interface ProjectImagesProps {
-  images: any;
-}
-
-function ProjectImages({ images }: ProjectImagesProps) {
-  return (
-    <div className='flex flex-col items-center justify-center gap-5 pt-5'>
-      <p className='text-2xl font-semibold'>Detail</p>
-      <div className='flex flex-wrap justify-center gap-2'>
-        {images.map((item: any, index: string) => {
-          if (item.attachment) {
-            return (
-              <div key={index}>
-                <FullscreenImage
-                  src={"/assets/image/projects/" + item.attachment}
-                  alt={item.name}
-                  width={300}
-                  height={100}
-                />
-              </div>
-            )
-          }
-        })}
-      </div>
-    </div>
-  )
-}
+import SectionProjectDetail from './sectionProjectDetail';
 
 export async function generateMetadata({ params: { lang, slug } }:any): Promise<Metadata> {
   const langValue = packValueChecker(lang)
@@ -129,31 +72,6 @@ export default async function Page({ params: { lang, slug } }: any) {
   }
 
   return (
-    <>
-      <div className='md:px-48 px-4 pb-10 pt-28'>
-        <div className='flex flex-wrap justify-center gap-5'>
-          {/* left */}
-          <ProjectDetail projectDetailValue={projectDetailValue} />
-          {/* right */}
-          <div>
-            {/* thumbnail */}
-            {projectDetailValue.image &&
-              <FullscreenImage
-                src={"/assets/image/projects/" + projectDetailValue.image}
-                alt={projectDetailValue.name}
-                width={500}
-                height={100}
-              />}
-          </div>
-        </div>
-        {/* detail image */}
-        {projectDetailValue.images.length != 0 ? (
-          <ProjectImages images={projectDetailValue.images} />
-        ) : (
-          <div></div>
-        )}
-
-      </div>
-    </>
+    <SectionProjectDetail data={projectDetailValue} />
   )
 }

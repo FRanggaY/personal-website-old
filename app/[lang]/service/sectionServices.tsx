@@ -1,31 +1,21 @@
-import Image from 'next/image'
+"use client"
 import React from 'react'
+// additional component
+import { ListItemService, serviceVariants } from '@/components/Card/CardService';
 // logo from react icons
 import { RiMedalFill } from 'react-icons/ri';
+// framer motion
+import { motion } from "framer-motion" 
 
 // props
 interface Props {
-  name: string,
-  description?: string,
-  logoImage: string,
-  url?: string,
+  title: string;
+  titleSolution: string;
+  dataSkillSolutions: any;
+  comingSoonTitle: string;
 }
 
-// list item vertical
-const ListItemVertical = ({ name, description, logoImage, url }: Props) => {
-  return <a href={url} target="_blank" className='p-5 flex flex-col items-center card-skill-hover gap-2'>
-    {/* image */}
-    <Image src={logoImage} alt={name} width={250} height={250} style={{ width: 'auto', height: 'auto' }} priority={true} />
-    <div>
-      {/* title */}
-      <p className='text-xl font-semibold'>{name}</p>
-      {/* description */}
-      <p style={{ width: '250px'}}>{description}</p>
-    </div>
-  </a>
-}
-
-function SectionServices({ title, titleSolution, dataSkillSolutions, comingSoonTitle }: any) {
+function SectionServices({ title, titleSolution, dataSkillSolutions, comingSoonTitle }: Props) {
   return (
     <div>
       {/* title */}
@@ -40,11 +30,16 @@ function SectionServices({ title, titleSolution, dataSkillSolutions, comingSoonT
           <p className='text-xl lg:text-2xl'> {titleSolution} :</p>
         </div>
         {/* layout skill solution */}
-        <div className='flex flex-wrap justify-center'>
+        <motion.div 
+          variants={serviceVariants}
+          initial="hidden"
+          animate="show"
+          className='flex flex-wrap justify-center'
+        >
           {dataSkillSolutions !== "Data not found" && dataSkillSolutions !== "Internal Server Error" ? (
             // loop data
             dataSkillSolutions.map((skill: any, index: string) => {
-              return <ListItemVertical
+              return <ListItemService
                 key={index}
                 name={skill.name}
                 logoImage={"/assets/image/skills/solution/" + skill.image}
@@ -56,7 +51,7 @@ function SectionServices({ title, titleSolution, dataSkillSolutions, comingSoonT
               <p className='text-xl lg:text-2xl'>{comingSoonTitle} <br /> </p>
             </div>
           )}
-        </div>
+        </motion.div>
       </div>
     </div>
   )

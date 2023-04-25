@@ -1,42 +1,40 @@
-import Image from 'next/image'
+"use client"
 import React from 'react'
+// framer motion
+import { motion } from "framer-motion"
+// additional component
+import { ListItemProjectPlatform, projectPlatformVariants } from '@/components/Card/CardProject'
 
-// props
 interface Props {
-  langUrl: string,
-  title: string,
-  logoUrl: string,
-  url: string,
+  title: string;
+  datas: any;
+  langUrl: string;
 }
 
-// list item project platform
-const ListItemProjectPlatform = ({ langUrl, title, logoUrl, url }: Props) => {
-  return <a href={langUrl + "/" + url} className='flex flex-col gap-10 justify-end items-center px-20 py-10 border-2 rounded-lg hover:border-blue-400'>
-    {/* platform image */}
-    <Image src={logoUrl} alt={title} width={80} height={80} style={{ width: '100%', height: 'auto' }} />
-    {/* platform title */}
-    <h2 className='font-semibold'>{title.toUpperCase()}</h2>
-  </a>
-}
-
-function SectionWorks({ title, datas, langUrl }: any) {
+function SectionWorks({ title, datas, langUrl }: Props) {
   return (
     <div className='flex items-center justify-center flex-col gap-3'>
       {/* title */}
       <h2 className='text-3xl lg:text-4xl font-semibold'>{title}</h2>
       {/* layout project platform */}
-      <div className='pt-8 flex gap-5 flex-wrap justify-center'>
+      <motion.div 
+        variants={projectPlatformVariants}
+        initial="hidden"
+        animate="show"
+        className='pt-8 flex gap-5 flex-wrap justify-center'
+      >
         {/* loop data */}
         {datas.map((data: any, index: string) => {
-          return <ListItemProjectPlatform
-            key={index}
-            langUrl={langUrl}
+          return <ListItemProjectPlatform key={index}
             title={data.title}
             logoUrl={data.logo}
-            url={data.url}
+            url={langUrl + "/" + data.url}
+            additionalClass='flex-col gap-10  px-20 py-10'
+            width={80}
+            height={80}
           />
         })}
-      </div>
+      </motion.div>
     </div>
   )
 }

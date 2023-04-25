@@ -1,49 +1,23 @@
 "use client"
 import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
 import { useSearchParams } from 'next/navigation';
+// framer motion
+import { motion } from "framer-motion"
 // additional components
 import PaginationRequestParam from '@/components/PaginationRequestParam';
+import { projectPlatformVariants, projectPlatformAnimate, ListItemProjectPlatform, ListItemProject } from '@/components/Card/CardProject'
 // utils
 import { getData } from '@/utils/getData'
 
-// button item project props
-interface ProjectPlatformProps {
+// props
+interface Props {
   title: string,
-  logoUrl: string,
-  url: string,
-}
-// list item project props
-interface ProjectProps {
-  projectUpdated: string,
-  title: string,
-  image?: string,
-  url: string,
+  datas: any,
+  langFormat: string,
+  titleNotFound: string,
 }
 
-// list item project platform
-const ButtonItemProjectPlatform = ({ title, logoUrl, url }: ProjectPlatformProps) => {
-  return <a href={url} className='flex flex-row gap-2 justify-end items-center p-2 border-2 rounded-lg hover:border-blue-400'>
-    {/* platform image */}
-    <Image src={logoUrl} alt={title} width={20} height={20} style={{ width: '100%', height: 'auto' }} />
-    {/* platform title */}
-    <h2 className='font-semibold'>{title.toUpperCase()}</h2>
-  </a>
-}
-
-// const list item project
-const ListItemProject = ({ projectUpdated, title, image, url }: ProjectProps) => {
-  return <a href={url} target='_blank' className='flex flex-col gap-2 items-center p-2 border-2 rounded-lg hover:border-blue-400' >
-    {/* project image */}
-    {image && <Image src={"/assets/image/projects/" + image} alt={title} width={200} height={200} style={{ width: '100%', height: '150px' }} priority={true} />}
-    {/* project title */}
-    <h2 className='font-semibold'>{title.toUpperCase()}</h2>
-    {/* project date */}
-    <span className='text-gray-400'>{projectUpdated}</span>
-  </a>
-}
-
-function SectionProjects({ title, datas, langFormat, titleNotFound }: any) {
+function SectionProjects({ title, datas, langFormat, titleNotFound }: Props) {
   // initial
   const searchParams = useSearchParams();
   let platform: any = '';
@@ -86,29 +60,39 @@ function SectionProjects({ title, datas, langFormat, titleNotFound }: any) {
       {/* title */}
       <h2 className='text-3xl lg:text-4xl font-semibold'>{title} {platform}</h2>
       {/* layout project platform */}
-      <div className='pt-8 flex gap-5 flex-wrap justify-center'>
-        <a href={"projects"} className='flex flex-row gap-2 p-2 justify-end items-center border-2 rounded-lg hover:border-blue-400'>
+      <motion.div 
+        variants={projectPlatformVariants}
+        initial="hidden"
+        animate="show"
+        className='pt-8 flex gap-5 flex-wrap justify-center'
+      >
+        <motion.a 
+          href={"projects"} 
+          variants={projectPlatformAnimate} 
+          className='flex flex-row gap-2 p-2 justify-end items-center border-2 rounded-lg hover:border-blue-400'
+        >
           {/* platform title */}
           <h2 className='font-semibold'>ALL</h2>
-        </a>
+        </motion.a>
         {/* loop data */}
         {datas.map((data: any, index: string) => {
-          return <ButtonItemProjectPlatform
-            key={index}
+          return <ListItemProjectPlatform key={index}
             title={data.title}
             logoUrl={data.logo}
             url={data.url}
+            additionalClass='flex-row gap-2 p-2'
+            width={20}
+            height={20}
           />
         })}
-      </div>
+      </motion.div>
       {/* card project */}
       <div className='pt-8'>
         {dataProject !== "Data not found" && dataProject !== "Internal Server Error" ? (
           <>
             <div className='flex gap-3 flex-wrap justify-center'>
               {dataProject.projects.map((project: any, index: string) => {
-                return <ListItemProject
-                  key={index}
+                return <ListItemProject key={index}
                   title={project.name}
                   projectUpdated={project.projectUpdated}
                   url={"projects/" + project.slug}
