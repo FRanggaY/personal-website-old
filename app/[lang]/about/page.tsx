@@ -11,6 +11,8 @@ import { getData } from '@/utils/getData'
 const seo_title = 'About | ' + process.env.YOURNAME;
 const seo_description = 'This is about page';
 const seo_icon = '/assets/image/my-logo.png'
+const my_cv = process.env.YOURURLCV ?? ''
+const my_certificate = process.env.YOURURLCERTIFICATE ?? ''
 
 export const metadata: Metadata = {
   title: seo_title,
@@ -78,6 +80,8 @@ export default async function Page({ params: { lang } }: any) {
           dataEducations={educationValues}
           titleOther={titleAbout.titleOther}
           dataOthers={titleAbout.dataOthers}
+          urlCV={my_cv}
+          urlCertificate={my_certificate}
         />
       </div>
     </>

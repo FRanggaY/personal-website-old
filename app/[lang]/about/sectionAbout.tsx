@@ -23,21 +23,23 @@ interface Props {
   dataEducations: any;
   titleOther: string;
   dataOthers: any;
+  urlCV: string;
+  urlCertificate: string;
 }
 
-// data list other
-const dataListOther: any = {
-  'cv': {
-    'logo': <RiProfileFill size={50} />,
-    'url': process.env.YOURURLCV,
-  },
-  'certificate': {
-    'logo': <RiShieldStarFill size={50} />,
-    'url': process.env.YOURURLCERTIFICATE,
-  },
-}
-
-function SectionAbout({ title, profileName, profilePositions, titleSocialMedia, dataSocialMedias, titleExperience, dataExperiences, titleEducation, dataEducations, titleOther, dataOthers }: Props) {
+function SectionAbout({ title, profileName, profilePositions, titleSocialMedia, dataSocialMedias, titleExperience, dataExperiences, titleEducation, dataEducations, titleOther, dataOthers, urlCV, urlCertificate }: Props) {
+  // data list other
+  const dataListOther: any = {
+    'cv': {
+      'logo': <RiProfileFill size={50} />,
+      'url': urlCV,
+    },
+    'certificate': {
+      'logo': <RiShieldStarFill size={50} />,
+      'url': urlCertificate,
+    },
+  }
+  console.log(dataListOther)
   return (
     <div>
       {/* title */}
