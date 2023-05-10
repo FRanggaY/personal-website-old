@@ -6,7 +6,8 @@ const nextConfig = {
   },
   env: {
     API_BASE_URL: process.env.API_BASE_URL
-  }
+  },
+  output: 'standalone', // enable this if using docker
 }
 
 module.exports = nextConfig

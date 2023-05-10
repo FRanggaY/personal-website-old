@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  webprod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: webprod_personal_portfolio_docker
+    container_name: webprod_personal_portfolio_docker
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    command: node server.js
