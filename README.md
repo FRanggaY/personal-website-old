@@ -6,7 +6,39 @@ Personal Portfolio is a website-ready
 
 Want to contribute? Great!
 
-## Development Using Containerized (Coming Soon)
+## Development Using Containerized (Recommended)
+
+> Note:  using next js 13 experimental, tested using windows
+
+Download [Docker](https://docs.docker.com/get-docker/) then choose platform.
+
+Duplicate .env.example and rename into .env
+
+Configuration .env with the valid variable
+
+Build Compose Build
+
+```sh
+docker-compose build
+```
+
+Run Compose Up
+
+```sh
+docker-compose up -d
+```
+
+Run Compose Down
+
+```sh
+docker-compose down
+```
+
+Check application (default)
+
+```sh
+localhost:3000
+```
 
 ## Development Using Local Setup
 

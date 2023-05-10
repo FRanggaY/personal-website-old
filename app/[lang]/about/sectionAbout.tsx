@@ -39,7 +39,6 @@ function SectionAbout({ title, profileName, profilePositions, titleSocialMedia, 
       'url': urlCertificate,
     },
   }
-  console.log(dataListOther)
   return (
     <div>
       {/* title */}

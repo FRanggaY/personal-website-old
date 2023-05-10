@@ -41,8 +41,9 @@ function Navbar ({ currentPath, router }: any){
           <Image
             priority
             src={MyLogo}
-            width={60}
+            width={55}
             alt="FRY"
+            className='p-2'
           />
         </Link>
         {/* content */}
