@@ -25,6 +25,39 @@
 					"updatedAt": "3\/3\/2023"
 				}
 			]
+		},
+		{
+			"id": "p0002",
+			"image": "personal-data-explorer\/case-netllix-indonesia\/51620231102thumbnail.png",
+			"createdAt": "5\/16\/2023",
+			"updatedAt": "5\/16\/2023",
+			"isActive": "1",
+			"projectCreated": "2023-05-15",
+			"projectUpdated": "2023-05-15",
+			"language": "in_ID",
+			"name": "Eksplorasi Netflix Indonesia",
+			"slug": "explore-netflix-indonesia",
+			"description": "kegiatan pribadi untuk eksplorasi netflix dari negara Indonesia",
+			"tags": "",
+			"platform": "data",
+			"urlPreview": "",
+			"urlRepository": "https:\/\/github.com\/FRanggaY\/personal-data-explorer\/tree\/master\/case-netflix",
+			"images": [
+				{
+					"id": "pi002",
+					"name": "preview_one",
+					"attachment": "personal-data-explorer\/case-netllix-indonesia\/51620231102preview1.png",
+					"createdAt": "5\/16\/2023",
+					"updatedAt": "5\/16\/2023"
+				},
+				{
+					"id": "pi003",
+					"name": "preview_two",
+					"attachment": "personal-data-explorer\/case-netllix-indonesia\/51620231102preview2.png",
+					"createdAt": "5\/16\/2023",
+					"updatedAt": "5\/16\/2023"
+				}
+			]
 		}
 	]
 }
