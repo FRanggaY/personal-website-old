@@ -12,6 +12,19 @@
 			"name": "Portfolio Pribadi",
 			"slug": "personal-portfolio",
 			"platform": "website"
+		},
+		{
+			"id": "p0002",
+			"image": "personal-data-explorer\/case-netllix-indonesia\/51620231102thumbnail.png",
+			"createdAt": "5\/16\/2023",
+			"updatedAt": "5\/16\/2023",
+			"isActive": "1",
+			"projectCreated": "2023-05-15",
+			"projectUpdated": "2023-05-15",
+			"language": "in_ID",
+			"name": "Eksplorasi Netflix Indonesia",
+			"slug": "explore-netflix-indonesia",
+			"platform": "data"
 		}
 	]
 }

@@ -8,10 +8,23 @@
 			"isActive": "1",
 			"projectCreated": "2021-08-07",
 			"projectUpdated": "2023-04-21",
-			"language": "in_ID",
+			"language": "en_US",
 			"name": "Personal Portfolio",
 			"slug": "personal-portfolio",
 			"platform": "website"
+		},
+		{
+			"id": "p0002",
+			"image": "personal-data-explorer\/case-netllix-indonesia\/51620231102thumbnail.png",
+			"createdAt": "5\/15\/2023",
+			"updatedAt": "5\/15\/2023",
+			"isActive": "1",
+			"projectCreated": "2023-05-15",
+			"projectUpdated": "2023-05-15",
+			"language": "en_US",
+			"name": "Explore Netflix Indonesia",
+			"slug": "explore-netflix-indonesia",
+			"platform": "data"
 		}
 	]
 }

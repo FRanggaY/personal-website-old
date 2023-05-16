@@ -19,6 +19,16 @@
 			"isActive": "1",
 			"image": "linkedin.png",
 			"username": "Franciscus Rangga Yogianto"
+		},
+		{
+			"id": "3",
+			"name": "instagram",
+			"url": "https:\/\/www.instagram.com\/franciscusranggay\/",
+			"createdAt": "5\/16\/2023",
+			"updatedAt": "5\/16\/2023",
+			"isActive": "1",
+			"image": "instagram.png",
+			"username": "Franciscus Rangga Y"
 		}
 	]
 }
