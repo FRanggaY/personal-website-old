@@ -55,7 +55,7 @@ function ProjectImages({ images }: ProjectImagesProps) {
           if (item.attachment) {
             return (
               <FullscreenImage key={index}
-                src={"/assets/image/projects/" + item.attachment}
+                src={item.attachment.includes('http') ? item.attachment : "/assets/image/projects/" + item.attachment}
                 alt={item.name}
                 width={300}
                 height={100}
@@ -87,7 +87,7 @@ function SectionProjectDetail({ data }: Props) {
             {/* thumbnail */}
             {data.image &&
               <FullscreenImage
-                src={"/assets/image/projects/" + data.image}
+                src={data.image.includes('http') ? data.image : "/assets/image/projects/" + data.image}
                 alt={data.name}
                 width={500}
                 height={100}

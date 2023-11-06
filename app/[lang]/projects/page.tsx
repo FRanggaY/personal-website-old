@@ -54,15 +54,13 @@ export default async function Page({ params: { lang } }: any) {
   const titleProject = locales[langValue].projects
 
   return (
-    <>
-      <div className='md:px-48 px-4 pb-10 pt-28'>
-        <SectionProjects 
-          title={titleProject.title} 
-          datas={projectPlatforms.project_platforms}
-          langFormat={langValue}
-          titleNotFound={titleProject.titleNotFound}
-         />
-      </div>
-    </>
+    <div className='md:px-48 px-4 pb-10 pt-28'>
+      <SectionProjects 
+        title={titleProject.title} 
+        datas={projectPlatforms.project_platforms}
+        langFormat={langValue}
+        titleNotFound={titleProject.titleNotFound}
+        />
+    </div>
   )
 }

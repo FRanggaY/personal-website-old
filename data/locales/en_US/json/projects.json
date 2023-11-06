@@ -25,6 +25,32 @@
 			"name": "Explore Netflix Indonesia",
 			"slug": "explore-netflix-indonesia",
 			"platform": "data"
+		},
+		{
+			"id": "p0003",
+			"image": "https:\/\/raw.githubusercontent.com\/FRanggaY\/personal-blog-lite\/master\/public\/social-banner.png",
+			"createdAt": "11\/06\/2023",
+			"updatedAt": "11\/06\/2023",
+			"isActive": "1",
+			"projectCreated": "2023-08-13",
+			"projectUpdated": "2023-11-06",
+			"language": "en_US",
+			"name": "Personal Blog (Lite Version)",
+			"slug": "personal-blog-lite",
+			"platform": "website"
+		},
+		{
+			"id": "p0004",
+			"image": "https:\/\/raw.githubusercontent.com\/FRanggaY\/personal-blog-api\/master\/static\/doc\/image\/api-part-1.png",
+			"createdAt": "11\/06\/2023",
+			"updatedAt": "11\/06\/2023",
+			"isActive": "1",
+			"projectCreated": "2023-08-18",
+			"projectUpdated": "2023-11-04",
+			"language": "en_US",
+			"name": "Personal Blog API",
+			"slug": "personal-blog-api",
+			"platform": "website"
 		}
 	]
 }

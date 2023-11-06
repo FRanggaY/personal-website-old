@@ -67,7 +67,7 @@ export const ListItemProject = ({ projectUpdated, title, image, url }: ProjectPr
     className='flex flex-col gap-2 items-center p-2 border-2 rounded-lg hover:border-blue-400' 
   >
     {/* project image */}
-    {image && <Image src={"/assets/image/projects/" + image} alt={title} width={200} height={200} style={{ width: '100%', height: '150px' }} priority={true} />}
+    {image && <Image src={ image.includes('http') ? image : "/assets/image/projects/" + image} alt={title} width={200} height={200} style={{ width: '100%', height: '150px' }} priority={true} />}
     {/* project title */}
     <h2 className='font-semibold'>{title.toUpperCase()}</h2>
     {/* project date */}
