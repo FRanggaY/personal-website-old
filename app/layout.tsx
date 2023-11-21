@@ -1,4 +1,3 @@
-"use client"
 import '@/styles/theme.css';
 import '@/styles/globals.css';
 import { Providers } from './providers'

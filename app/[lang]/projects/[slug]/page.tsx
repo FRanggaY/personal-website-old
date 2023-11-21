@@ -7,6 +7,7 @@ import { getData } from '@/utils/getData'
 import { notFound } from 'next/navigation';
 // additional component
 import SectionProjectDetail from './sectionProjectDetail';
+import siteMetadata from '@/utils/siteMetaData';
 
 export async function generateMetadata({ params: { lang, slug } }:any): Promise<Metadata> {
   const langValue = packValueChecker(lang)
@@ -17,19 +18,29 @@ export async function generateMetadata({ params: { lang, slug } }:any): Promise<
   const seo_title = projectDetailValue.name + ' | ' + process.env.YOURNAME;
   const seo_description = projectDetailValue.description || '';
   const seo_site = process.env.SEO_URL + "/projects/" + projectDetailValue.slug
-  const seo_image = process.env.SEO_URL_ASSET + "/assets/image/projects/" + projectDetailValue.image
+  const seo_image = projectDetailValue.image.includes('http') ? projectDetailValue.image : process.env.SEO_URL_ASSET + "/assets/image/projects/" + projectDetailValue.image
   const seo_icon = '/assets/image/my-logo.png'
 
+  const publishedAt = projectDetailValue.projectCreated;
+  const modifiedAt = projectDetailValue.projectUpdated;
+
+  const authors = projectDetailValue?.author ? [projectDetailValue.author] : siteMetadata.author;
+
   return { 
+    metadataBase: new URL(seo_site ?? ''),
     title: seo_title,
     description: seo_description,
     openGraph: {
       title: seo_title,
       description: seo_description,
       url:  seo_site,
+      locale: lang,
       siteName: seo_title,
-      type: 'website',
-      images: seo_image
+      type: "article",
+      images: seo_image,
+      publishedTime: publishedAt,
+      modifiedTime: modifiedAt,
+      authors: authors ?? [siteMetadata.author],
     },
     twitter: {
       card: 'summary_large_image',

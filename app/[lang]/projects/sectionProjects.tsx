@@ -27,22 +27,28 @@ function SectionProjects({ title, datas, langFormat, titleNotFound }: Props) {
     page = searchParams.get('page');
   }
   const [dataProject, setDataProject]: any = useState();
+  const [urlParams, setUrlParams]:any = useState(new URLSearchParams());
 
-  // set up active param
-  let urlParams = new URLSearchParams();
-  urlParams.append('lang', langFormat);
-  if (platform) urlParams.append('platform', platform);
-  if (page) urlParams.append('page', String(page));
-
-  // get data projects
-  const fetchDataProjects = async () => {
-    const data = await getData(`projects?${urlParams.toString()}`, false);
-    setDataProject(data.data);
-  };
   // set data projects
   useEffect(() => {
+    // get data projects
+    const fetchDataProjects = async () => {
+      const data = await getData(`projects?${urlParams.toString()}`, false);
+      setDataProject(data.data);
+    };
     fetchDataProjects();
-  }, []);
+  }, [urlParams]);
+
+  useEffect(() => {
+    const updateUrlParams = () => {
+      const newUrlParams = new URLSearchParams();
+      newUrlParams.append('lang', langFormat);
+      if (platform) newUrlParams.append('platform', platform);
+      if (page) newUrlParams.append('page', String(page));
+      setUrlParams(newUrlParams);
+    };
+    updateUrlParams();
+  }, [langFormat, platform, page]);
 
   if (!dataProject) {
     return null

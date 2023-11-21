@@ -1,5 +1,4 @@
 import React from 'react';
-import { Metadata } from 'next';
 // to handle language selection
 import { packValueChecker } from '@/utils/functionlangChecker'
 import { locales } from '@/data/dataTranslation'
@@ -7,45 +6,43 @@ import SectionProjects from './sectionProjects';
 // json
 import projectPlatforms from '@/data/locales/en_US/json/projectPlatforms.json'
 
-const seo_title = 'Projects | ' + process.env.YOURNAME;
-const seo_description = 'This is projects page';
-const seo_icon = '/assets/image/my-logo.png'
+import siteMetadata from '@/utils/siteMetaData';
 
-export const metadata: Metadata = {
-  title: seo_title,
-  description: seo_description,
-  icons: {
-    icon: seo_icon,
-    shortcut: seo_icon,
-    apple: seo_icon,
-    other: {
-      rel: 'apple-touch-icon-precomposed',
-      url: seo_icon,
-    },
+const seo_title = 'Projects | ' + siteMetadata.title;
+const seo_url =  process.env.SEO_URL + "/projects";
+
+export const metadata = {
+  metadataBase: new URL(seo_url ?? ''),
+  title: {
+    template: `%s | ${siteMetadata.title}`,
+    default: seo_title, // a default is required when creating a template
+  },
+  description: siteMetadata.description,
+  openGraph: {
+    title: seo_title,
+    description: siteMetadata.description,
+    url:  seo_url,
+    siteName: siteMetadata.title,
+    images: [siteMetadata.socialBanner],
+    locale: siteMetadata.locale,
+    type: "website",
   },
   robots: {
     index: true,
     follow: true,
-    nocache: true,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
-  openGraph: {
-    title: seo_title,
-    description: seo_description,
-    url:  process.env.SEO_URL + "/projects",
-    siteName: seo_title,
-    locale: process.env.SEO_LOCALE,
-    type: 'website',
-  },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title: seo_title,
-    description: seo_description,
-    site: '@' + process.env.SEO_CREATOR,
-    creator: '@' + process.env.SEO_CREATOR
+    images: [siteMetadata.socialBanner],
   },
 };
 

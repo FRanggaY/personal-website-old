@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-function FullscreenImage({ src, alt, width, height }:any) {
+function FullscreenImage({ src, alt, width, height }: any) {
   // initialize
   const [isFullscreen, setIsFullscreen] = useState(false);
   // toggle
@@ -29,10 +29,14 @@ function FullscreenImage({ src, alt, width, height }:any) {
             zIndex: 9999,
           }}
         >
-          <img
+          <Image
             src={src}
             alt={alt}
-            style={{ maxHeight: '80%', maxWidth: '100%' }}
+            width={100}
+            height={100}
+            style={{ width: '90%', height: 'auto' }}
+            unoptimized
+            className='cursor-pointer'
           />
         </div>
       )}
@@ -41,8 +45,8 @@ function FullscreenImage({ src, alt, width, height }:any) {
         src={src}
         alt={alt}
         onClick={toggleFullscreen}
-        width={width} 
-        height={height} 
+        width={width}
+        height={height}
         style={{ width: '100%', height: 'auto' }}
         priority={true}
         className='cursor-pointer'
