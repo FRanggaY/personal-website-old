@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: process.env.SITE_URL,
+  siteUrl: process.env.SEO_URL,
   generateRobotsTxt: true,
 }
