@@ -7,7 +7,7 @@ const siteMetadata = {
     theme:  process.env.THEME, // system, dark or light
     siteUrl: process.env.SEO_URL, // your website URL
     siteLogo:  process.env.SITE_LOGO,
-    socialBanner: process.env.SOCIAL_BANNER, // add social banner in the public folder
+    socialBanner: process.env.SEO_URL_ASSET + "/" + process.env.SOCIAL_BANNER, // add social banner in the public folder
     locale: process.env.SEO_LOCALE,
   }
 
