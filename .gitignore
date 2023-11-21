@@ -39,3 +39,8 @@ next-env.d.ts
 .vscode
 .env
 note.txt
+
+# sitemap
+public/robots.txt
+public/sitemap-0.xml
+public/sitemap.xml
