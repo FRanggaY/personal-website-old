@@ -63,25 +63,23 @@ export default async function Page({ params: { lang } }: any) {
   const educationValues = educationData.data
   
   return (
-    <>
-      <div className='md:px-48 px-4 pb-10 pt-28'>
-        {/* Section */}
-        <SectionAbout
-          title={titleAbout.title}
-          profileName={profileValue.name}
-          profilePositions={profileValue.position}
-          titleSocialMedia={titleAbout.titleSocialMedia}
-          dataSocialMedias={profileValue.socialMedia}
-          titleExperience={titleAbout.titleExperience}
-          dataExperiences={experienceValues}
-          titleEducation={titleAbout.titleEducation}
-          dataEducations={educationValues}
-          titleOther={titleAbout.titleOther}
-          dataOthers={titleAbout.dataOthers}
-          urlCV={my_cv}
-          urlCertificate={my_certificate}
-        />
-      </div>
-    </>
+    <div className='md:px-48 px-4 pb-10 pt-28'>
+      {/* Section */}
+      <SectionAbout
+        title={titleAbout.title}
+        profileName={profileValue.name}
+        profilePositions={profileValue.position}
+        titleSocialMedia={titleAbout.titleSocialMedia}
+        dataSocialMedias={profileValue.socialMedia}
+        titleExperience={titleAbout.titleExperience}
+        dataExperiences={experienceValues}
+        titleEducation={titleAbout.titleEducation}
+        dataEducations={educationValues}
+        titleOther={titleAbout.titleOther}
+        dataOthers={titleAbout.dataOthers}
+        urlCV={my_cv}
+        urlCertificate={my_certificate}
+      />
+    </div>
   )
 }

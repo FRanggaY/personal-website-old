@@ -18,7 +18,7 @@ export async function generateMetadata({ params: { lang, slug } }:any): Promise<
   const seo_title = projectDetailValue.name + ' | ' + process.env.YOURNAME;
   const seo_description = projectDetailValue.description || '';
   const seo_site = process.env.SEO_URL + "/projects/" + projectDetailValue.slug
-  const seo_image = projectDetailValue.image.includes('http') ? projectDetailValue.image : process.env.SEO_URL_ASSET + "/assets/image/projects/" + projectDetailValue.image
+  const seo_image = projectDetailValue.image?.includes('http') ? projectDetailValue.image : process.env.SEO_URL_ASSET + "/assets/image/projects/" + projectDetailValue.image
   const seo_icon = '/assets/image/my-logo.png'
 
   const publishedAt = projectDetailValue.projectCreated;
