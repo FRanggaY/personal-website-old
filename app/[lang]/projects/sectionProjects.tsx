@@ -35,6 +35,7 @@ function SectionProjects({ title, datas, langFormat, titleNotFound }: Props) {
     // get data projects
     if (platform) newUrlParams.append('platform', platform);
     if (page) newUrlParams.append('page', String(page));
+    newUrlParams.append('perPage', String('10'));
     newUrlParams.append('lang', String(langFormat));
     const fetchDataProjects = async () => {
       const data = await getData(`projects?${newUrlParams.toString()}`, false);
