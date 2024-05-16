@@ -1,21 +1,12 @@
 "use client"
 import { cn } from "@/lib/utils";
 import {
-  Home,
-  Layers,
-  User2,
   CircleX,
   CircleEllipsis,
   MoveUp
 } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import Link from "next/link";
 import { useState } from "react";
 import MyLogo from '@/public/assets/logo/my-logo.png'
@@ -29,9 +20,9 @@ const Navbar = () => {
   const params = useParams<{ locale: string; }>();
   const locale = params.locale || "en"
   const items = [
-    { name: "Home", icon: <Home />, link: `/${locale}` },
-    { name: "about", icon: <User2 />, link: `/${locale}/about` },
-    { name: "projects", icon: <Layers />, link: `/${locale}/projects` },
+    { name: "Home", link: `/${locale}` },
+    { name: "About", link: `/${locale}/about` },
+    { name: "Projects", link: `/${locale}/projects` },
   ];
 
   const [nav, setNav] = useState(false);
@@ -57,24 +48,15 @@ const Navbar = () => {
         </Link>
         <div className={`hover:scale-100 max-sm:gap-1 hidden sm:flex`}>
           {/* content */}
-          {items.map((itm) => {
+          {items.map((item) => {
             return (
-              <TooltipProvider key={itm.name}>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link href={itm.link}
-                      className={cn(
-                        buttonVariants({ variant: "ghost", size: "sm" })
-                      )}
-                    >
-                      {itm.icon}
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{itm.name}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <Link href={item.link} key={item.link}
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "sm" })
+                )}
+              >
+                <p>{item.name}</p>
+              </Link>
             );
           })}
         </div>
@@ -99,24 +81,15 @@ const Navbar = () => {
         nav &&
         <div className="sm:hidden fixed inset-0 flex flex-col justify-center items-center w-full min-h-screen bg-slate-950 dark:bg-white text-white dark:text-black z-5">
           {/* content */}
-          {items.map((itm) => {
+          {items.map((item) => {
             return (
-              <TooltipProvider key={itm.name}>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link href={itm.link}
-                      className={cn(
-                        buttonVariants({ variant: "ghost", size: "sm" })
-                      )}
-                    >
-                      {itm.icon}
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{itm.name}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <Link href={item.link} key={item.link}
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "sm" })
+                )}
+              >
+                <p>{item.name}</p>
+              </Link>
             );
           })}
           {/* mode */}
