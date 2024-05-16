@@ -1,6 +1,7 @@
 const siteMetadata = {
   title: process.env.NEXT_PUBLIC_TITLE,
   author: process.env.NEXT_PUBLIC_AUTHOR,
+  authorInitial: process.env.NEXT_PUBLIC_AUTHOR_INITIAL,
   headerTitle: process.env.NEXT_PUBLIC_PROFILE_NAME,
   description: process.env.NEXT_PUBLIC_DESCRIPTION,
   language: process.env.NEXT_PUBLIC_LANGUAGE,
