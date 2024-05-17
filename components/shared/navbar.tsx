@@ -36,7 +36,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className={`flex justify-around w-full h-fit items-center z-10 fixed p-2 bg-slate-950 dark:bg-white text-white dark:text-black item gap-3 hover:scale-100 max-sm:gap-1`}>
+      <nav className={`flex justify-around w-full h-fit items-center z-10 fixed p-2 bg-slate-950 dark:bg-white text-white dark:text-black item gap-3 hover:scale-100 max-sm:gap-1`}>
         <Link href={'/'}>
           <Image
             priority
@@ -73,13 +73,13 @@ const Navbar = () => {
             <CircleEllipsis />
           )}
         </button>
-      </div>
+      </nav>
 
 
       {/* mobile Menu */}
       {
         nav &&
-        <div className="sm:hidden fixed inset-0 flex flex-col justify-center items-center w-full min-h-screen bg-slate-950 dark:bg-white text-white dark:text-black z-5">
+        <nav className="sm:hidden fixed inset-0 flex flex-col justify-center items-center w-full min-h-screen bg-slate-950 dark:bg-white text-white dark:text-black z-5">
           {/* content */}
           {items.map((item) => {
             return (
@@ -97,7 +97,7 @@ const Navbar = () => {
             <LanguageToggle />
             <ThemeToggle />
           </div>
-        </div>
+        </nav>
       }
 
       {/* scroll to up */}

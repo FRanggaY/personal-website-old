@@ -10,6 +10,14 @@ const siteMetadata = {
   siteLogo:  process.env.NEXT_PUBLIC_SITE_LOGO,
   socialBanner: process.env.NEXT_PUBLIC_SOCIAL_BANNER, // add social banner in the public folder
   locale: process.env.NEXT_PUBLIC_LOCALE,
+  appVersion: process.env.NEXT_PUBLIC_APP_VERSION,
+
+  socialMedia: {
+    github:  process.env.NEXT_PUBLIC_GITHUB_URL,
+    linkedin:  process.env.NEXT_PUBLIC_LINKEDIN_URL,
+    youtube:  process.env.NEXT_PUBLIC_YOUTUBE_URL,
+    instagram:  process.env.NEXT_PUBLIC_INSTAGRAM_URL,
+  }
 }
 
 export default siteMetadata;
