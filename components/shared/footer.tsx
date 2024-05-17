@@ -17,25 +17,25 @@ import siteMetadata from "@/lib/siteMetaData";
 import { useParams } from "next/navigation";
 import { socialMedias } from "@/lib/constant";
 
-const Footer = () => {
+const Footer = ({ titleHome, titleAbout, titleProjects }: { titleHome: string, titleAbout: string, titleProjects: string }) => {
   const params = useParams<{ locale: string; }>();
   const locale = params.locale || "en"
   const items = [
-    { name: "Home", link: `/${locale}` },
-    { name: "About", link: `/${locale}/about` },
-    { name: "Projects", link: `/${locale}/projects` },
+    { name: titleHome, link: `/${locale}` },
+    { name: titleAbout, link: `/${locale}/about` },
+    { name: titleProjects, link: `/${locale}/projects` },
   ];
 
   return (
-    <footer className={`absolute bottom-0 w-full h-fit bg-slate-950 dark:bg-white text-white dark:text-black`}>
+    <footer className={`mt-auto w-full h-fit bg-gray-300 text-black dark:bg-slate-800 dark:text-white`}>
       <div className="flex flex-wrap justify-around items-center p-2 item gap-3 hover:scale-100 max-sm:gap-1">
-        <Link href={'/'} className="flex items-center">
+        <Link href={'/'} className="flex items-center gap-2">
           <Image
             priority
             src={MyLogo}
             width={55}
             alt={siteMetadata.authorInitial ?? 'profile'}
-            className='p-2'
+            className='p-2 bg-slate-200 rounded-lg'
           />
           <p className="text-lg">{siteMetadata.author}</p>
         </Link>
