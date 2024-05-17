@@ -27,10 +27,18 @@ interface About {
   now: string,
 }
 
+interface Projects {
+  title: {
+    hero: string,
+  },
+  description: string,
+}
+
 export interface DataLocale {
   [key: string]: {
+    navbar: Navbar,
     landing: Landing,
     about: About,
-    navbar: Navbar,
+    projects: Projects,
   };
 }

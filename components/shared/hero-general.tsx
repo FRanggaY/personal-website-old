@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-const HeroAbout = ({ title, description }: { title: string, description: string }) => {
+const HeroGeneral = ({ title, description }: { title: string, description: string }) => {
   return (
     <div className='flex flex-wrap justify-center gap-5'>
       <div className='text-left p-5'>
@@ -13,4 +13,4 @@ const HeroAbout = ({ title, description }: { title: string, description: string 
   )
 }
 
-export default HeroAbout
+export default HeroGeneral

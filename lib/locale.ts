@@ -26,6 +26,12 @@ const engData = {
     },
     description: '',
     now: 'Now',
+  },
+  projects: {
+    title: {
+      hero: 'Projects',
+    },
+    description: '',
   }
 }
 
@@ -55,6 +61,12 @@ const indData = {
     },
     description: '',
     now: 'Saat ini',
+  },
+  projects: {
+    title: {
+      hero: 'Proyek',
+    },
+    description: '',
   }
 }
 

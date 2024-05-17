@@ -10,7 +10,7 @@ import { getPublicProfileEducations, getPublicProfileExperiences, getPublicProfi
 
 import { PublicProfileEducation, PublicProfileExperience, PublicProfileSkill } from '@/types/public_profile';
 
-import HeroAbout from '@/components/layout/hero/hero-about';
+import HeroGeneral from '@/components/shared/hero-general';
 
 // skill
 import { data as StaticSkillEn } from '@/data/static/en/public_profile_skill';
@@ -93,7 +93,7 @@ export default async function About({ params }: { readonly params: LanguageParam
       />
       <main className='mt-24' >
 
-        <HeroAbout
+        <HeroGeneral
           title={tBody.title.hero}
           description={tBody.description}
         />
