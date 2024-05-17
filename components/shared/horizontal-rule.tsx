@@ -1,6 +1,10 @@
 import React from 'react'
 
-export default function HorizontalRule({ title }: {title: string}) {
+export default function HorizontalRule({
+  title
+}: Readonly<{
+  title: string;
+}>) {
   return (
     <div className="relative flex py-5 items-center mx-5">
       <div className="flex-grow border-t border-gray-400"></div>

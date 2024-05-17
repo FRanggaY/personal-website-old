@@ -15,9 +15,22 @@ interface Landing {
   description: string,
 }
 
+interface About {
+  title: {
+    hero: string,
+    skill: string,
+    experience: string,
+    education: string,
+    contact: string,
+  },
+  description: string,
+  now: string,
+}
+
 export interface DataLocale {
   [key: string]: {
     landing: Landing,
+    about: About,
     navbar: Navbar,
   };
 }

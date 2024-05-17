@@ -10,13 +10,13 @@ import {
 import React from 'react'
 import Image from 'next/image';
 
-const CardSolution = ({ title, description, imageUrl }: { title: string, description: string, imageUrl: string | null }) => {
+const CardSolution = ({ title, description, logoUrl }: { title: string, description: string, logoUrl: string | null }) => {
   return (
     <Card className="text-center">
       <CardHeader>
-        {imageUrl && <Image
+        {logoUrl && <Image
           priority
-          src={imageUrl}
+          src={logoUrl}
           width={100}
           height={100}
           alt={title ?? 'solution'}

@@ -1,6 +1,13 @@
 import { DataLocale } from "@/types/data_locale";
 
 const engData = {
+  navbar: {
+    title: {
+      home: 'Home',
+      about: 'About',
+      projects: 'Projects',
+    },
+  },
   landing: {
     title: {
       position: "Software & Data Engineer",
@@ -9,16 +16,27 @@ const engData = {
     },
     description: 'I am a passionate learner in application development.',
   },
-  navbar: {
+  about: {
     title: {
-      home: 'Home',
-      about: 'About',
-      projects: 'Projects',
+      hero: 'About',
+      skill: 'Skills',
+      experience: 'Experience',
+      education: 'Education',
+      contact: 'Contact',
     },
+    description: '',
+    now: 'Now',
   }
 }
 
 const indData = {
+  navbar: {
+    title: {
+      home: 'Beranda',
+      about: 'Tentang',
+      projects: 'Proyek',
+    },
+  },
   landing: {
     title: {
       position: "Software & Data Engineer",
@@ -27,12 +45,16 @@ const indData = {
     },
     description: 'Memiliki minat dalam pengembangan aplikasi.',
   },
-  navbar: {
+  about: {
     title: {
-      home: 'Beranda',
-      about: 'Tentang',
-      projects: 'Proyek',
+      hero: 'Tentang',
+      skill: 'Kemampuan',
+      experience: 'Pengalaman',
+      education: 'Edukasi',
+      contact: 'Kontak',
     },
+    description: '',
+    now: 'Saat ini',
   }
 }
 

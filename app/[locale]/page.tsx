@@ -83,7 +83,7 @@ export default async function Home({ params }: { readonly params: LanguageParams
                     key={item.id}
                     title={item.title}
                     description={item.description}
-                    imageUrl={item.logo_url}
+                    logoUrl={item.logo_url}
                   />
                 })
               }
@@ -102,7 +102,7 @@ export default async function Home({ params }: { readonly params: LanguageParams
                     key={item.id}
                     name={item.name}
                     description={item.description}
-                    imageUrl={item.logo_url}
+                    logoUrl={item.logo_url}
                     websiteUrl={item.website_url}
                   />
                 })
