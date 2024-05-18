@@ -87,6 +87,7 @@ export interface PublicProfileProjectAttachment {
   created_at: string;
   updated_at: string;
   image_url: string;
+  website_url: string;
 }
 
 export interface PublicProfileProjectDetail {
@@ -98,7 +99,7 @@ export interface PublicProfileProjectDetail {
   updated_at: string;
   image_url: string;
   logo_url: string;
-  skill: PublicProfileSkill[];
+  skills: PublicProfileSkill[];
   attachments: PublicProfileProjectAttachment[];
 }
 

@@ -214,7 +214,7 @@ export const getPublicProfileProjectDetail = async (username: string, language_i
 
     if (!response.ok) {
       return {
-        data: []
+        data: {}
       };
     }
 
@@ -222,7 +222,7 @@ export const getPublicProfileProjectDetail = async (username: string, language_i
     return datas;
   } catch (error) {
     return {
-      data: []
+      data: {}
     };
   }
 };

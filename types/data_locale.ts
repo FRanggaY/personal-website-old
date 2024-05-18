@@ -34,11 +34,20 @@ interface Projects {
   description: string,
 }
 
+interface Project {
+  title: {
+    stack: string,
+    preview: string,
+  },
+  description: string,
+}
+
 export interface DataLocale {
   [key: string]: {
     navbar: Navbar,
     landing: Landing,
     about: About,
     projects: Projects,
+    project: Project,
   };
 }

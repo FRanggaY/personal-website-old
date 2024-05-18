@@ -32,6 +32,13 @@ const engData = {
       hero: 'Projects',
     },
     description: '',
+  },
+  project: {
+    title: {
+      stack: 'Stack',
+      preview: 'Preview',
+    },
+    description: '',
   }
 }
 
@@ -65,6 +72,13 @@ const indData = {
   projects: {
     title: {
       hero: 'Proyek',
+    },
+    description: '',
+  },
+  project: {
+    title: {
+      stack: 'Perangkat',
+      preview: 'Preview',
     },
     description: '',
   }

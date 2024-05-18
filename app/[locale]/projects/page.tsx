@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   description: "Portfolio for personal",
 };
 
-export default async function About({ params, searchParams }: { readonly params: LanguageParams, readonly searchParams?: { [key: string]: string | string[] | undefined }; }) {
+export default async function Projects({ params, searchParams }: { readonly params: LanguageParams, readonly searchParams?: { [key: string]: string | string[] | undefined }; }) {
   const locale = validLocale(params.locale);
   const tNav = dataLocale[locale].navbar;
   const tBody = dataLocale[locale].projects;

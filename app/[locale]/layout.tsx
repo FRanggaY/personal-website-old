@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: `Porfolio | ${siteMetadata.author}`,
     description: siteMetadata.description,
     images: [`${siteMetadata.appUrl}/assets/open-graph/landing.png`],
-    creator: "@Taquiimam14",
+    creator: '@' + siteMetadata.author,
   },
   icons: {
     icon: "/favicon.ico",
