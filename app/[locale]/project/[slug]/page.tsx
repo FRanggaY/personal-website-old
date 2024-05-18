@@ -71,7 +71,7 @@ export async function generateMetadata({ params }: { readonly params: ProjectDet
     creator: siteMetadata.author,
 
     openGraph: {
-      title: String(dataProjectDetail.title),
+      title: `${String(dataProjectDetail.title)} | ${siteMetadata.author}`,
       description: String(dataProjectDetail.description),
       url:  String(siteMetadata.appUrl + `/${locale}/project/${params.slug}`),
       locale: locale,
@@ -84,7 +84,7 @@ export async function generateMetadata({ params }: { readonly params: ProjectDet
     },
     twitter: {
       card: 'summary_large_image',
-      title: String(dataProjectDetail.title),
+      title: `${String(dataProjectDetail.title)} | ${siteMetadata.author}`,
       description: String(dataProjectDetail.description),
       site: '@' + siteMetadata.author,
       creator: '@' + siteMetadata.author,
