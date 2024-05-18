@@ -1,88 +1,43 @@
-# Personal Portfolio
-![Personal Portfolio](https://github.com/FRanggaY/personal-portfolio/blob/master/public/assets/image/my-logo.png)
-## _Portfolio based on real life hands on_
 
-Personal Portfolio is a website-ready
+Customized
+- locale.ts
+- folder on static
 
-Want to contribute? Great!
 
-## Development Using Containerized (Recommended)
 
-> Note:  using next js 13 experimental, tested using windows
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Download [Docker](https://docs.docker.com/get-docker/) then choose platform.
+## Getting Started
 
-Duplicate .env.example and rename into .env
+First, run the development server:
 
-Configuration .env with the valid variable
-
-Build Compose Build
-
-```sh
-docker-compose build
-```
-
-Run Compose Up
-
-```sh
-docker-compose up -d
-```
-
-Run Compose Down
-
-```sh
-docker-compose down
-```
-
-Check application (default)
-
-```sh
-localhost:3000
-```
-
-## Development Using Local Setup
-
-> Note:  using next js 13 experimental, tested using windows
-
-Download [Node Js](https://nodejs.org/en) find for lts version.
-
-Install package
-
-```sh
-npm install
-```
-
-Duplicate .env.example and rename into .env
-
-Configuration .env with the valid variable
-
-Running application
-
-```sh
+```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Check application (default)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```sh
-localhost:3000
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Publish Local to Forced Production 
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-Download [Ngrok](https://ngrok.com/).
+## Learn More
 
-Set up your key
+To learn more about Next.js, take a look at the following resources:
 
-```sh
-ngrok http 3000
-```
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Copy the url forwarding.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Publish Online 
+## Deploy on Vercel
 
-Use [Vercel](https://vercel.com/) or other serverless service.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## One more thing
-If you have any suggestions on making this to be better, help us, create issue or write some code and send pull request.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
