@@ -37,7 +37,7 @@ const ImagePreviewProjectAttachmentList: React.FC<ProjectDetailProps> = ({ title
         dataProjectDetailAttachmentImage.length > 0 &&
         <div>
           <HorizontalRule title={title} />
-          <div className='flex gap-5 justify-center flex-wrap items-center'>
+          <div className='flex gap-5 justify-center flex-wrap items-center px-4'>
             {
               dataProjectDetailAttachmentImage.map((item: PublicProfileProjectAttachment) => {
                 if(item.image_url){

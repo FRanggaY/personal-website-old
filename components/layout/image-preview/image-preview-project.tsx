@@ -21,7 +21,7 @@ const ImagePreviewProject: React.FC<ProjectDetailProps> = ({ dataProjectDetail }
   };
 
   return (
-    <div>
+    <div className='px-4'>
       {dataProjectDetail.image_url && (
         <ImageThumbnail alt={dataProjectDetail.title as string} src={dataProjectDetail.image_url} onClick={handleThumbnailClick} />
       )}
