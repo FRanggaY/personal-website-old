@@ -29,10 +29,35 @@ import TimelineEducation from '@/components/layout/timeline/timeline-education';
 import SocialMedia from '@/components/shared/social-media';
 
 
-export const metadata: Metadata = {
-  title: `About | ${siteMetadata.author}`,
-  description: "Portfolio for personal",
-};
+export async function generateMetadata({ params }: { readonly params: LanguageParams }): Promise<Metadata> {
+  const locale = validLocale(params.locale);
+  return { 
+    metadataBase: new URL(String(siteMetadata.appUrl + `/${locale}/about`)),
+    title: {
+      default: 'About',
+      template: `%s - ${siteMetadata.author}`,
+    },
+    description: 'About for personal portfolio',
+
+    openGraph: {
+      locale: locale,
+      type: "website",
+      url: String(siteMetadata.appUrl + `/${locale}/about`),
+      title: `About | ${siteMetadata.author}`,
+      description: siteMetadata.description,
+      images: [`${siteMetadata.appUrl}/assets/open-graph/landing.png`],
+      siteName: siteMetadata.author,
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: `About | ${siteMetadata.author}`,
+      description: siteMetadata.description,
+      images: [`${siteMetadata.appUrl}/assets/open-graph/landing.png`],
+      creator: '@' + siteMetadata.author,
+    },
+  }
+}
 
 export default async function About({ params }: { readonly params: LanguageParams }) {
   const locale = validLocale(params.locale);

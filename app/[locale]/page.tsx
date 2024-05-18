@@ -21,11 +21,35 @@ import { data as StaticSkillEn } from '@/data/static/en/public_profile_skill';
 import { data as StaticSkillId } from '@/data/static/id/public_profile_skill';
 import CardSkill from '@/components/layout/card/card-skill';
 
+export async function generateMetadata({ params }: { readonly params: LanguageParams }): Promise<Metadata> {
+  const locale = validLocale(params.locale);
+  return { 
+    metadataBase: new URL(String(siteMetadata.appUrl + `/${locale}/home`)),
+    title: {
+      default: 'Home',
+      template: `%s - ${siteMetadata.author}`,
+    },
+    description: 'Home for personal portfolio',
 
-export const metadata: Metadata = {
-  title: `Home | ${siteMetadata.author}`,
-  description: "Portfolio for personal",
-};
+    openGraph: {
+      locale: locale,
+      type: "website",
+      url: String(siteMetadata.appUrl + `/${locale}/home`),
+      title: `Home | ${siteMetadata.author}`,
+      description: siteMetadata.description,
+      images: [`${siteMetadata.appUrl}/assets/open-graph/landing.png`],
+      siteName: siteMetadata.author,
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: `Home | ${siteMetadata.author}`,
+      description: siteMetadata.description,
+      images: [`${siteMetadata.appUrl}/assets/open-graph/landing.png`],
+      creator: '@' + siteMetadata.author,
+    },
+  }
+}
 
 export default async function Home({ params }: { readonly params: LanguageParams }) {
   const locale = validLocale(params.locale);

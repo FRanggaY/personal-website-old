@@ -18,10 +18,35 @@ import { data as StaticProjectId } from '@/data/static/id/public_profile_project
 import CardProject from '@/components/layout/card/card-project';
 import PaginationMenu from '@/components/shared/pagination-menu';
 
-export const metadata: Metadata = {
-  title: `Projects | ${siteMetadata.author}`,
-  description: "Portfolio for personal",
-};
+export async function generateMetadata({ params }: { readonly params: LanguageParams }): Promise<Metadata> {
+  const locale = validLocale(params.locale);
+  return { 
+    metadataBase: new URL(String(siteMetadata.appUrl + `/${locale}/projects`)),
+    title: {
+      default: 'Projects',
+      template: `%s - ${siteMetadata.author}`,
+    },
+    description: 'Projects for personal portfolio',
+
+    openGraph: {
+      locale: locale,
+      type: "website",
+      url: String(siteMetadata.appUrl + `/${locale}/projects`),
+      title: `Projects | ${siteMetadata.author}`,
+      description: siteMetadata.description,
+      images: [`${siteMetadata.appUrl}/assets/open-graph/landing.png`],
+      siteName: siteMetadata.author,
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: `Projects | ${siteMetadata.author}`,
+      description: siteMetadata.description,
+      images: [`${siteMetadata.appUrl}/assets/open-graph/landing.png`],
+      creator: '@' + siteMetadata.author,
+    },
+  }
+}
 
 export default async function Projects({ params, searchParams }: { readonly params: LanguageParams, readonly searchParams?: { [key: string]: string | string[] | undefined }; }) {
   const locale = validLocale(params.locale);

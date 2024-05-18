@@ -26,16 +26,15 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    locale: "en_US",
     url: siteMetadata.appUrl,
-    title: `Porfolio | ${siteMetadata.author}`,
+    title: `Portfolio | ${siteMetadata.author}`,
     description: siteMetadata.description,
     images: [`${siteMetadata.appUrl}/assets/open-graph/landing.png`],
     siteName: siteMetadata.author,
   },
   twitter: {
     card: "summary_large_image",
-    title: `Porfolio | ${siteMetadata.author}`,
+    title: `Portfolio | ${siteMetadata.author}`,
     description: siteMetadata.description,
     images: [`${siteMetadata.appUrl}/assets/open-graph/landing.png`],
     creator: '@' + siteMetadata.author,
