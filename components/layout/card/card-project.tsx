@@ -2,38 +2,30 @@
 
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 
-import { ArrowUpRight } from "lucide-react";
-
 import React from 'react'
-import Image from 'next/image';
 import Link from "next/link";
 
-const CardProject = ({ title, description, imageUrl, slug }: { title: string, description: string, imageUrl: string | null, slug: string | null }) => {
+interface CardProjectProps {
+  title: string;
+  description: string;
+  slug: string | null;
+  colspan: boolean;
+}
+
+const CardProject: React.FC<CardProjectProps> = ({ title, description, slug, colspan }) => {
   if (slug) {
     return (
-      <Link href={slug} target="_blank" rel="noopener noreferrer" className="hover:shadow-lg">
-        <Card className="text-center">
+      <Link href={slug} target="_blank" rel="noopener noreferrer" className={`${colspan ? 'col-span-1 md:col-span-2' : ''} hover:shadow-lg border rounded-full hover:border-red-500 hover:border-l-8`}>
+        <Card className="p-4 md:p-6">
           <CardHeader>
-            <div className="flex flex-col items-start gap-1">
-              <CardTitle className="flex gap-5">{title} <ArrowUpRight /></CardTitle>
+              <CardTitle>{title}</CardTitle>
               <CardDescription>{description}</CardDescription>
-            </div>
           </CardHeader>
-          <CardContent>
-            {imageUrl && <Image
-              priority
-              src={imageUrl}
-              width={300}
-              height={300}
-              alt={title ?? 'project'}
-            />}
-          </CardContent>
         </Card>
       </Link>
     )

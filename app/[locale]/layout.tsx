@@ -15,15 +15,7 @@ export const metadata: Metadata = {
   description: siteMetadata.description,
 
   // seo keyword
-  keywords: [
-    "fry",
-    "franciscus rangga",
-    "franciscusrangga",
-    "FRY",
-    "franciscus rangga y",
-    "Franciscus Rangga Y",
-    "Franciscus Rangga",
-  ],
+  keywords: siteMetadata.keywords,
   authors: [
     {
       name: siteMetadata.author,

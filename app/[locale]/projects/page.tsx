@@ -28,7 +28,7 @@ export default async function About({ params, searchParams }: { readonly params:
   const tNav = dataLocale[locale].navbar;
   const tBody = dataLocale[locale].projects;
 
-  const page = searchParams?.page ?? 1;
+  const page = searchParams?.page ?? '1';
   let loadStaticData = false;
 
 
@@ -62,19 +62,19 @@ export default async function About({ params, searchParams }: { readonly params:
           description={tBody.description}
         />
 
-
         {
           dataProjects.data.length > 0 &&
-          <div className='flex flex-col gap-10 mb-14'>
-            <div className='flex gap-5 justify-center flex-wrap'>
+          <div className='flex flex-col gap-10 m-14'>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
               {
                 dataProjects.data.map((item: PublicProfileProject) => {
+                  const randomColspan = Math.random() < 0.5;
                   return <CardProject
                     key={item.id}
                     title={item.title}
                     description={item.description}
-                    imageUrl={item.image_url}
                     slug={`/${locale}/project/${item.slug}`}
+                    colspan={randomColspan}
                   />
                 })
               }

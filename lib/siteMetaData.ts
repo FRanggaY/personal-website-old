@@ -14,7 +14,17 @@ const siteMetadata = {
     linkedin:  process.env.NEXT_PUBLIC_LINKEDIN_URL,
     youtube:  process.env.NEXT_PUBLIC_YOUTUBE_URL,
     instagram:  process.env.NEXT_PUBLIC_INSTAGRAM_URL,
-  }
+  },
+
+  keywords: [
+    "fry",
+    "franciscus rangga",
+    "franciscusrangga",
+    "FRY",
+    "franciscus rangga y",
+    "Franciscus Rangga Y",
+    "Franciscus Rangga",
+  ]
 }
 
 export default siteMetadata;
