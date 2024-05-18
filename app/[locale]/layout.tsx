@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(String(siteMetadata.appUrl)),
   title: {
     default: 'Portfolio',
-    template: `%s - ${siteMetadata.author}`,
+    template: `%s | ${siteMetadata.author}`,
   },
   description: siteMetadata.description,
 

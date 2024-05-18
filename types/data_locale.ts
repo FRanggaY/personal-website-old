@@ -3,6 +3,7 @@ interface Navbar {
     home: string,
     about: string,
     projects: string,
+    copyright: string,
   },
 }
 

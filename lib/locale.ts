@@ -6,6 +6,7 @@ const engData = {
       home: 'Home',
       about: 'About',
       projects: 'Projects',
+      copyright: 'All rights reserved',
     },
   },
   landing: {
@@ -48,6 +49,7 @@ const indData = {
       home: 'Beranda',
       about: 'Tentang',
       projects: 'Proyek',
+      copyright: 'Seluruh hak cipta',
     },
   },
   landing: {

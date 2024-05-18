@@ -10,7 +10,7 @@ import siteMetadata from "@/lib/siteMetaData";
 import { useParams } from "next/navigation";
 import SocialMedia from "./social-media";
 
-const Footer = ({ titleHome, titleAbout, titleProjects }: { titleHome: string, titleAbout: string, titleProjects: string }) => {
+const Footer = ({ titleHome, titleAbout, titleProjects, copyright }: { titleHome: string, titleAbout: string, titleProjects: string, copyright: string }) => {
   const params = useParams<{ locale: string; }>();
   const locale = params.locale || "en"
   const items = [
@@ -49,7 +49,7 @@ const Footer = ({ titleHome, titleAbout, titleProjects }: { titleHome: string, t
       </div>
       <hr />
       <div className="mt-2 flex flex-wrap justify-around items-center p-2 item gap-3 hover:scale-100 max-sm:gap-10">
-        <p className="text-xs text-center sm:text-left">{new Date().getFullYear()} © {siteMetadata.author}. All rights reserved. <span className="p-1 bg-blue-600 text-white">{siteMetadata.appVersion}</span> </p>
+        <p className="text-xs text-center sm:text-left">{new Date().getFullYear()} © {siteMetadata.author}. {copyright}. <span className="p-1 bg-blue-600 text-white">{siteMetadata.appVersion}</span> </p>
         <SocialMedia />
       </div>
     </footer>

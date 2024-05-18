@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { readonly params: LanguagePa
     metadataBase: new URL(String(siteMetadata.appUrl + `/${locale}/about`)),
     title: {
       default: 'About',
-      template: `%s - ${siteMetadata.author}`,
+      template: `%s | ${siteMetadata.author}`,
     },
     description: 'About for personal portfolio',
 
@@ -211,6 +211,7 @@ export default async function About({ params }: { readonly params: LanguageParam
         titleHome={tNav.title.home}
         titleAbout={tNav.title.about}
         titleProjects={tNav.title.projects}
+        copyright={tNav.title.copyright}
       />
     </div>
   );

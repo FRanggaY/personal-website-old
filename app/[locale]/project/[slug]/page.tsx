@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: { readonly params: ProjectDet
     metadataBase: new URL(String(siteMetadata.appUrl + `/${locale}/project/${params.slug}`)),
     title: {
       default: String(dataProjectDetail.title),
-      template: `%s - ${siteMetadata.author}`,
+      template: `%s | ${siteMetadata.author}`,
     },
     description: String(dataProjectDetail.description),
 
@@ -227,6 +227,7 @@ export default async function ProjectDetail({ params }: { readonly params: Proje
         titleHome={tNav.title.home}
         titleAbout={tNav.title.about}
         titleProjects={tNav.title.projects}
+        copyright={tNav.title.copyright}
       />
     </div>
   );

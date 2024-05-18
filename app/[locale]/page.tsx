@@ -25,10 +25,7 @@ export async function generateMetadata({ params }: { readonly params: LanguagePa
   const locale = validLocale(params.locale);
   return { 
     metadataBase: new URL(String(siteMetadata.appUrl + `/${locale}/home`)),
-    title: {
-      default: 'Home',
-      template: `%s - ${siteMetadata.author}`,
-    },
+    title: `Home | ${siteMetadata.author}`,
     description: 'Home for personal portfolio',
 
     openGraph: {
@@ -140,6 +137,7 @@ export default async function Home({ params }: { readonly params: LanguageParams
         titleHome={tNav.title.home}
         titleAbout={tNav.title.about}
         titleProjects={tNav.title.projects}
+        copyright={tNav.title.copyright}
       />
     </div>
   );

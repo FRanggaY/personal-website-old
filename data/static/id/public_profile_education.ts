@@ -7,7 +7,7 @@ export const data = {
       "title": "Mahasiswa",
       "degree": "Mahasiswa",
       "description": null,
-      "field_of_study": "Mahasiswa",
+      "field_of_study": "Teknik Informatika",
       "started_at": "2022-08-17",
       "finished_at": null,
       "created_at": "2024-05-11 05:16:37",
