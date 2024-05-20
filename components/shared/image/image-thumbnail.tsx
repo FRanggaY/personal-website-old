@@ -16,7 +16,7 @@ const ImageThumbnail: React.FC<ImageThumbnailProps> = ({ src, alt, onClick }) =>
       alt={`${alt} image`}
       style={{ cursor: 'pointer' }}
       onClick={onClick}
-      className='opacity-70 hover:opacity-100'
+      className='hover:scale-105'
     />
   );
 };
