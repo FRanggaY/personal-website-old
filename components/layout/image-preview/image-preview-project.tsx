@@ -2,7 +2,7 @@
 "use client";
 import ImageModal from '@/components/shared/image/image-modal';
 import ImageThumbnail from '@/components/shared/image/image-thumbnail';
-import { PublicProfileProjectDetail } from '@/types/public_profile';
+import { PublicProfileProjectDetail } from '@/types/public-profile';
 import React, { useState } from 'react';
 
 interface ProjectDetailProps {

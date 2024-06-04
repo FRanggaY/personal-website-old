@@ -3,7 +3,7 @@
 import HorizontalRule from '@/components/shared/horizontal-rule';
 import ImageModal from '@/components/shared/image/image-modal';
 import ImageThumbnail from '@/components/shared/image/image-thumbnail';
-import { PublicProfileProjectAttachment } from '@/types/public_profile';
+import { PublicProfileProjectAttachment } from '@/types/public-profile';
 import React, { useState } from 'react';
 
 interface ProjectDetailProps {

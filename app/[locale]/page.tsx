@@ -7,18 +7,18 @@ import Navbar from '@/components/shared/navbar';
 import Footer from '@/components/shared/footer';
 import HeroProfile from '@/components/layout/hero/hero-profile';
 import HorizontalRule from '@/components/shared/horizontal-rule';
-import { getPublicProfileSkills, getPublicProfileSolutions } from '@/data/repository/public_profile';
+import { getPublicProfileSkills, getPublicProfileSolutions } from '@/data/repository/public-profile-repository';
 
-import { PublicProfileSolution, PublicProfileSkill } from '@/types/public_profile';
+import { PublicProfileSolution, PublicProfileSkill } from '@/types/public-profile';
 
 // solution
-import { data as StaticSolutionEn } from '@/data/static/en/public_profile_solution';
-import { data as StaticSolutionId } from '@/data/static/id/public_profile_solution';
+import { data as StaticSolutionEn } from '@/data/static/en/public-profile-solution';
+import { data as StaticSolutionId } from '@/data/static/id/public-profile-solution';
 import CardSolution from '@/components/layout/card/card-solution';
 
 // skill
-import { data as StaticSkillEn } from '@/data/static/en/public_profile_skill';
-import { data as StaticSkillId } from '@/data/static/id/public_profile_skill';
+import { data as StaticSkillEn } from '@/data/static/en/public-profile-skill';
+import { data as StaticSkillId } from '@/data/static/id/public-profile-skill';
 import CardSkill from '@/components/layout/card/card-skill';
 
 export async function generateMetadata({ params }: { readonly params: LanguageParams }): Promise<Metadata> {

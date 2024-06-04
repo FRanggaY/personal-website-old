@@ -6,25 +6,25 @@ import siteMetadata from '@/lib/siteMetaData';
 import Navbar from '@/components/shared/navbar';
 import Footer from '@/components/shared/footer';
 import HorizontalRule from '@/components/shared/horizontal-rule';
-import { getPublicProfileEducations, getPublicProfileExperiences, getPublicProfileSkills } from '@/data/repository/public_profile';
+import { getPublicProfileEducations, getPublicProfileExperiences, getPublicProfileSkills } from '@/data/repository/public-profile-repository';
 
-import { PublicProfileEducation, PublicProfileExperience, PublicProfileSkill } from '@/types/public_profile';
+import { PublicProfileEducation, PublicProfileExperience, PublicProfileSkill } from '@/types/public-profile';
 
 import HeroGeneral from '@/components/shared/hero-general';
 
 // skill
-import { data as StaticSkillEn } from '@/data/static/en/public_profile_skill';
-import { data as StaticSkillId } from '@/data/static/id/public_profile_skill';
+import { data as StaticSkillEn } from '@/data/static/en/public-profile-skill';
+import { data as StaticSkillId } from '@/data/static/id/public-profile-skill';
 import CardSkill from '@/components/layout/card/card-skill';
 
 // experience
-import { data as StaticExperienceEn } from '@/data/static/en/public_profile_experience';
-import { data as StaticExperienceId } from '@/data/static/id/public_profile_experience';
+import { data as StaticExperienceEn } from '@/data/static/en/public-profile-experience';
+import { data as StaticExperienceId } from '@/data/static/id/public-profile-experience';
 import TimelineExperience from '@/components/layout/timeline/timeline-experience';
 
 // education
-import { data as StaticEducationEn } from '@/data/static/en/public_profile_education';
-import { data as StaticEducationId } from '@/data/static/id/public_profile_education';
+import { data as StaticEducationEn } from '@/data/static/en/public-profile-education';
+import { data as StaticEducationId } from '@/data/static/id/public-profile-education';
 import TimelineEducation from '@/components/layout/timeline/timeline-education';
 import SocialMedia from '@/components/shared/social-media';
 

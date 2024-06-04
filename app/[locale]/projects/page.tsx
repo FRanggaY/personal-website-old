@@ -6,14 +6,14 @@ import siteMetadata from '@/lib/siteMetaData';
 import Navbar from '@/components/shared/navbar';
 import Footer from '@/components/shared/footer';
 
-import { getPublicProfileProjects } from '@/data/repository/public_profile';
+import { getPublicProfileProjects } from '@/data/repository/public-profile-repository';
 
-import { PublicProfileProject } from '@/types/public_profile';
+import { PublicProfileProject } from '@/types/public-profile';
 import HeroGeneral from '@/components/shared/hero-general';
 
 // project
-import { data as StaticProjectEn } from '@/data/static/en/public_profile_project';
-import { data as StaticProjectId } from '@/data/static/id/public_profile_project';
+import { data as StaticProjectEn } from '@/data/static/en/public-profile-project';
+import { data as StaticProjectId } from '@/data/static/id/public-profile-project';
 
 import CardProject from '@/components/layout/card/card-project';
 import PaginationMenu from '@/components/shared/pagination-menu';

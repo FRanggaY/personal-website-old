@@ -10,14 +10,14 @@ import HorizontalRule from '@/components/shared/horizontal-rule';
 import CardSkill from '@/components/layout/card/card-skill';
 import Image from 'next/image';
 
-import { getPublicProfileProjectDetail } from '@/data/repository/public_profile';
+import { getPublicProfileProjectDetail } from '@/data/repository/public-profile-repository';
 
-import { PublicProfileProjectAttachment, PublicProfileProjectDetail, PublicProfileSkill, ResponsePublicProfileProject } from '@/types/public_profile';
+import { PublicProfileProjectAttachment, PublicProfileProjectDetail, PublicProfileSkill, ResponsePublicProfileProject } from '@/types/public-profile';
 import HeroGeneral from '@/components/shared/hero-general';
 
 // project
-import { data as StaticProjectEn } from '@/data/static/en/public_profile_project';
-import { data as StaticProjectId } from '@/data/static/id/public_profile_project';
+import { data as StaticProjectEn } from '@/data/static/en/public-profile-project';
+import { data as StaticProjectId } from '@/data/static/id/public-profile-project';
 import ImagePreviewProject from '@/components/layout/image-preview/image-preview-project';
 import ImagePreviewProjectAttachmentList from '@/components/layout/image-preview/image-preview-project-attachment-list';
 
