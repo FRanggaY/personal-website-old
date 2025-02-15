@@ -145,6 +145,7 @@ export default async function About({ params }: { readonly params: LanguageParam
                       finishedAt={item.finished_at}
                       websiteUrl={item.company.website_url}
                       titleNow={tBody.now}
+                      locale={locale}
                     />
                   })
                 }
@@ -170,6 +171,7 @@ export default async function About({ params }: { readonly params: LanguageParam
                       finishedAt={item.finished_at}
                       websiteUrl={item.school.website_url}
                       titleNow={tBody.now}
+                      locale={locale}
                     />
                   })
                 }

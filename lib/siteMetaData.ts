@@ -6,6 +6,7 @@ const siteMetadata = {
 
   appVersion: process.env.NEXT_PUBLIC_APP_VERSION,
   appUrl: process.env.NEXT_PUBLIC_APP_URL,
+  apiUrl: process.env.NEXT_PUBLIC_API_URL,
 
   apiUsername: process.env.NEXT_PUBLIC_API_USERNAME,
 

@@ -77,7 +77,7 @@ export async function generateMetadata({ params }: { readonly params: ProjectDet
       locale: locale,
       siteName: siteMetadata.author,
       type: "article",
-      images: [`${dataProjectDetail.image_url}`],
+      images: [`${siteMetadata.apiUrl + '/' + dataProjectDetail.image_url }`],
       publishedTime: dataProjectDetail.created_at,
       modifiedTime: dataProjectDetail.updated_at,
       authors: [String(siteMetadata.author)],
@@ -88,7 +88,7 @@ export async function generateMetadata({ params }: { readonly params: ProjectDet
       description: String(dataProjectDetail.description),
       site: '@' + siteMetadata.author,
       creator: '@' + siteMetadata.author,
-      images: [`${dataProjectDetail.image_url}`],
+      images: [`${siteMetadata.apiUrl + '/' + dataProjectDetail.image_url }`],
     },
     icons: {
       icon: "/favicon.ico",
@@ -160,7 +160,7 @@ export default async function ProjectDetail({ params }: { readonly params: Proje
 
           {dataProjectDetail.logo_url && <Image
             priority
-            src={dataProjectDetail.logo_url}
+            src={siteMetadata.apiUrl + '/' + dataProjectDetail.logo_url}
             width={60}
             height={60}
             alt={'logo project'}
