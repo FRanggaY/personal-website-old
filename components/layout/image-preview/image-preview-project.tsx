@@ -23,10 +23,10 @@ const ImagePreviewProject: React.FC<ProjectDetailProps> = ({ dataProjectDetail }
   return (
     <div className='px-4'>
       {dataProjectDetail.image_url && (
-        <ImageThumbnail alt={dataProjectDetail.title as string} src={dataProjectDetail.image_url} onClick={handleThumbnailClick} />
+        <ImageThumbnail alt={dataProjectDetail.title as string} src={dataProjectDetail.image_url}  onClick={handleThumbnailClick} />
       )}
-      {isModalOpen && (
-        <ImageModal alt={dataProjectDetail.title as string} src={dataProjectDetail.image_url as string} onClose={handleCloseModal} />
+      {isModalOpen && dataProjectDetail.image_url && (
+        <ImageModal alt={dataProjectDetail.title as string} src={dataProjectDetail.image_url} onClose={handleCloseModal} />
       )}
     </div>
   );

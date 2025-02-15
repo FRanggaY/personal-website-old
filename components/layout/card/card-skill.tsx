@@ -13,6 +13,7 @@ import React from 'react'
 import Image from 'next/image';
 import Link from "next/link";
 import { motion } from "framer-motion";
+import siteMetadata from "@/lib/siteMetaData";
 
 const stagger = 0.25;
 
@@ -42,7 +43,7 @@ const CardSkill = ({ name, description, logoUrl, websiteUrl }: { name: string, d
               <div className="space-y-1.5 flex flex-row items-center space-x-4 pb-0">
                 {logoUrl && <Image
                   priority
-                  src={logoUrl}
+                  src={siteMetadata.apiUrl + '/' + logoUrl}
                   width={60}
                   height={60}
                   alt={name ?? 'skill'}

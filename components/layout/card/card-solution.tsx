@@ -10,6 +10,7 @@ import {
 import React from 'react'
 import Image from 'next/image';
 import { motion } from "framer-motion";
+import siteMetadata from "@/lib/siteMetaData";
 
 const stagger = 0.25;
 
@@ -35,7 +36,7 @@ const CardSolution = ({ title, description, logoUrl }: { title: string, descript
         <CardHeader>
           {logoUrl && <Image
             priority
-            src={logoUrl}
+            src={siteMetadata.apiUrl + '/' + logoUrl}
             width={100}
             height={100}
             alt={title ?? 'solution'}

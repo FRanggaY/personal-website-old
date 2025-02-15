@@ -5,6 +5,7 @@ import React from 'react'
 import EducationImage from '@/public/assets/image/education.png'
 import Link from 'next/link'
 import { motion } from "framer-motion";
+import siteMetadata from '@/lib/siteMetaData';
 
 const stagger = 0.25;
 
@@ -23,6 +24,7 @@ const TimelineEducation = ({
   finishedAt,
   titleNow,
   websiteUrl,
+  locale
 }: {
   schoolName: string,
   fieldOfStudy: string,
@@ -33,6 +35,7 @@ const TimelineEducation = ({
   finishedAt: string | null,
   logoUrl: string | null,
   websiteUrl: string | null,
+  locale: string
 }) => {
 
   return (
@@ -50,13 +53,22 @@ const TimelineEducation = ({
       <div className='flex min-h-[200px] font-sans pb-2'>
         <div className='flex flex-col'>
           <Link href={websiteUrl ?? ''} target="_blank" rel="noopener noreferrer" className="hover:shadow-lg p-2">
-            <Image
-              priority
-              src={logoUrl ?? EducationImage}
-              width={100}
-              height={100}
-              alt={title ?? 'experience'}
-            />
+            {
+              siteMetadata.appUrl && logoUrl ? <Image
+                priority
+                src={siteMetadata.apiUrl + '/' + logoUrl}
+                width={100}
+                height={100}
+                alt={title ?? 'education'}
+              /> : 
+              <Image
+                priority
+                src={EducationImage}
+                width={100}
+                height={100}
+                alt={title ?? 'education'}
+              />
+            }
           </Link>
           {/* line */}
           <div className='mt-2 w-px grow self-center bg-black dark:bg-white'></div>
@@ -64,7 +76,7 @@ const TimelineEducation = ({
         <div className='flex-initial pl-4'>
           <div className='font-bold text-black dark:text-white'>{schoolName}</div>
           <div className='text-sm text-zinc-600 dark:text-zinc-400'>
-            <span>{title} - {fieldOfStudy} ({formatMonthYear(startedAt)} {finishedAt ? `- ${formatMonthYear(finishedAt)}` : `- ${titleNow}`})</span>
+            <span>{title} - {fieldOfStudy} ({formatMonthYear(startedAt, locale)} {finishedAt ? `- ${formatMonthYear(finishedAt, locale)}` : `- ${titleNow}`})</span>
           </div>
           <div className='whitespace-pre-wrap pb-5 pt-3 text-zinc-600 dark:text-zinc-500'>
             {description}

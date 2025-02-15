@@ -3,13 +3,18 @@
  * @param {string} dateString - The date string in the format "YYYY-MM-DD HH:mm:ss"
  * @returns {string} The formatted date string in "Month YYYY" format
  */
-export const formatMonthYear = (dateString: string) => {
+export const formatMonthYear = (dateString: string, locale: string = 'en') => {
   const date = new Date(dateString);
-  const monthNames = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
-  const month = monthNames[date.getMonth()]; // Get month name from array
-  const year = date.getFullYear();
-  return `${month} ${year}`;
+
+  let localeFormat = 'en-US';
+  if(locale == 'id'){
+    localeFormat = 'id-ID'
+  }
+  
+  // Create an instance of DateTimeFormat for month and year
+  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long' };
+  const formattedDate = new Intl.DateTimeFormat(localeFormat, options).format(date);
+
+  return formattedDate;
 };
+
